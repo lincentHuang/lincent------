@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Project {
+  id           String   @id
+  title        String
+  subtitle     String
+  tag          String
+  category     String
+  year         String
+  role         String
+  company      String
+  badge        String?
+  themeColor   String   @default("yellow")
+  isNew        Boolean  @default(true)
+  summary      String
+  coverImage   String?
+  contentMd    String?
+  painPoints   String   // JSON stringified string[]
+  techStack    String   // JSON stringified string[]
+  aiHighlights String   // JSON stringified AI highlights object
+  metrics      String   // JSON stringified metric objects
+  demoUrl      String?
+  githubUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Inquiry {
+  id        String   @id @default(cuid())
+  name      String
+  company   String?
+  email     String
+  scope     String
+  budget    String?
+  message   String
+  status    String   @default("unread")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("inquiries")
+}

@@ -1,0 +1,250 @@
+{
+  "projects": [
+    {
+      "id": "cms-playground",
+      "title": "Cms Playground 跨主題遊戲平台架構",
+      "subtitle": "新加坡商海宇顧問 • Turborepo Monorepo、Jotai 原子狀態、ts-morph AST 代碼生成與 Radix UI 企業級 Design System",
+      "tag": "架構與系統設計",
+      "category": "Frontend Architecture",
+      "year": "2025/1 — 2026/8",
+      "role": "資深前端工程師",
+      "company": "新加坡商海宇顧問 (Seaverse)",
+      "badge": "🔥 旗艦代表作",
+      "themeColor": "yellow",
+      "isNew": true,
+      "summary": "以 Turborepo 構建大型 Monorepo 體系，整合 4 個 App 與 9 個核心 Package，打造 80+ 獨立 UI 區塊。引入 Jotai 原子化狀態管理與 ts-morph AST 自動代碼生成，賦予行銷團隊 100% 獨立排版上稿能力。",
+      "coverImage": "/uploads/1787334619283-S__66437123.webp",
+      "contentMd": "## 專案背景與痛點\n\n傳統跨品牌多主題遊戲平台常面臨**程式碼重複率高**、**多主題狀態管理衝突**、以及**行銷營運每次更動版面皆需工程團隊發版**的巨大瓶頸。為了解決多端遊戲平台在高頻切換主題時的效能與開發效率問題，我主導打造了全新的 **Cms Playground 模組化遊戲平台體系**。\n\n---\n\n## 核心技術突破與架構設計\n\n### 1. Turborepo Monorepo 模組化體系\n- 採用 **Turborepo + Yarn Workspaces** 統一管理 4 個前端 App 與 9 個核心 Packages。\n- 拆解出超過 **80+ 獨立 UI 區塊**，跨品牌程式碼重用率達 **85%**。\n\n### 2. Jotai 細粒度原子化狀態與 Optics-TS 光學變換\n- 捨棄龐大的全域單一 Store，改採 **Jotai 原子化狀態**（Atomic State Management），實現精準細粒度渲染，大幅減少不必要的 DOM Re-renders。\n- 結合 **Optics-TS** 光學變換庫，解決複雜深層巢狀物件的不變性狀態更新痛點。\n\n### 3. ts-morph AST 自動代碼生成引擎\n- 結合 **ts-morph** 分析 Abstract Syntax Tree (AST)，自動從後端 CMS 配置與 OpenAPI 規格生成 TypeScript 型別定義與 API 串接程式碼。\n- 減少工程師手動編寫樣板代碼時間超過 **60%**。\n\n### 4. Radix UI + Storybook 企業級 Design System\n- 建構無障礙 (a11y) 優先的企業級 Design System，涵蓋完整的 Design Tokens、色彩語義與響應式斷點。\n\n---\n\n## 實質商業與團隊價值\n\n> 🎯 **零工程介入的即時營運上稿**：行銷與營運團隊透過視覺化 WYSIWYG 畫布，可自由拖曳組合遊戲大廳版面，活動上線時間由原本的 3 天縮減至 **15 分鐘**。",
+      "painPoints": [
+        "跨品牌多主題遊戲平台重複造輪子，缺乏統一組件庫",
+        "深層狀態頻繁更新導致大廳渲染卡頓",
+        "每次版面更新需工程介入，行銷無法自主排版"
+      ],
+      "techStack": [
+        "React",
+        "Next.js",
+        "Jotai",
+        "Optics-TS",
+        "Turborepo",
+        "ts-morph (AST)",
+        "Radix UI",
+        "Storybook",
+        "Tailwind CSS"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "主導 Turborepo 架構，整合 4 個 App 與 9 個 Package，管理 80+ 獨立 UI 區塊",
+          "引入 Jotai 細粒度原子化狀態，結合 Optics-TS 光學變換，極大化渲染效能",
+          "以 ts-morph AST 自動從 CMS 配置生成 TypeScript 型別與串接代碼",
+          "基於 Radix UI 打造跨專案 Storybook Design System 統一設計語言"
+        ],
+        "animationHighlights": [
+          "React Native / Expo 手勢驅動 60FPS 物理回彈流暢動效",
+          "WYSIWYG 編輯器畫布拖拽時的即時磁吸對齊視覺反饋",
+          "多主題切換時的無縫色彩與層次過渡動畫"
+        ],
+        "usageScenarios": [
+          "行銷團隊：無需工程師介入即可自由拖拽區塊配置不同節慶遊戲大廳",
+          "前端團隊：透過 Monorepo packages 直接重用經過 Storybook 驗證的 UI 組件",
+          "終端用戶：在不同品牌風格間切換享受極致順暢的 60FPS 遊戲體驗"
+        ],
+        "clientPitch": "這套架構不只是一套前端平台，而是將設計、開發與營運串聯的企業級解決方案。透過 Monorepo 與 AST 自動化，大幅縮短 70% 的功能交付週期。"
+      },
+      "metrics": [
+        {
+          "label": "成效提升",
+          "value": "+80%"
+        },
+        {
+          "label": "滿意度",
+          "value": "99%"
+        }
+      ],
+      "demoUrl": "https://seaverse.com"
+    },
+    {
+      "id": "kryptogo-official",
+      "title": "kryptoGO 官方網站改版與 SEO 極致優化",
+      "subtitle": "重量科技 • Next.js 13、Strapi CMS、Gsap 動畫、i18n 多國語系與 Lighthouse 滿分標準",
+      "tag": "Web3 & 品牌體驗",
+      "category": "Web3 & Brand Experience",
+      "year": "2022/6 — 2023/7",
+      "role": "網頁設計師 / 前端工程師",
+      "company": "重量科技 (kryptoGO)",
+      "badge": "⭐ 滿分 SEO 效能",
+      "themeColor": "purple",
+      "summary": "重構 kryptoGO 品牌官網，導入 Next.js 13 App Router 與 Strapi Headless CMS，調校 Gsap 視差捲動，實現 Google Lighthouse SEO 與 Performance 接近滿分 (99/100) 的極致表現。",
+      "coverImage": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 專案目標與挑戰\n\n身為 Web3 金融科技先鋒品牌，kryptoGO 需要一個具備**國際級視覺質感**、**極致讀取速度**以及**全球多語系 SEO 搜尋排名**的全新品牌官方網站。\n\n---\n\n## 關鍵技術實作\n\n### 1. Next.js 13 + SSG 靜態生成\n- 全站採用 Next.js Static Site Generation (SSG)，結合邊緣 CDN 快取，實現全球首屏載入時間低於 **0.8 秒**。\n- 嚴格調校 Core Web Vitals (LCP, FID, CLS)，在 Google Lighthouse 達到 **99/100** 滿分評級。\n\n### 2. Gsap 頂級科技視差滾動 (ScrollTrigger)\n- 精心編排 3D 浮動光卡、動態粒子軌跡與滾動觸發敘事動效，在保證 60FPS 效能的前提下呈現 Web3 未來科技感。\n\n### 3. Strapi Headless CMS + i18n 多國語系\n- 串接 Strapi CMS，支援繁中、英文、日文多國語系無縫切換，並自動生成對應的 hreflang 標籤提升國際 SEO。\n\n---\n\n## 成果與成效\n- 官網改版上線後，自然搜尋流量（Organic Traffic）成長 **+140%**。\n- 協助 kryptoGO 成功完成與 91APP 等大型企業的 Web3 商業合作亮相。",
+      "painPoints": [
+        "舊版官網載入過慢且缺乏多語系 SEO",
+        "行銷團隊無法透過後台快速發布最新新聞與產品發布會"
+      ],
+      "techStack": [
+        "Next.js 13",
+        "TypeScript",
+        "Strapi CMS",
+        "Gsap",
+        "Tailwind CSS",
+        "i18n",
+        "Figma"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "導入 Next.js 13 與 SSG，Core Web Vitals 達到滿分評級",
+          "整合 Strapi Headless CMS，實現跨國語系動態內容管理",
+          "調校 Gsap 視差滾動與 Lottie 動畫，賦予 Web3 科技氛圍"
+        ],
+        "animationHighlights": [
+          "Gsap ScrollTrigger 視差滾動敘事與 3D 浮動粒子效果",
+          "多語系無縫平滑過渡與精緻按鈕微交互"
+        ],
+        "usageScenarios": [
+          "全球投資人與企業客戶：享受極速秒開的高品質品牌形象體驗",
+          "行銷團隊：一鍵多語系發布產品最新動態與新聞稿"
+        ],
+        "clientPitch": "結合頂級視覺動態與扎實的工程 SEO 底層，讓品牌在國際市場上具備最強勁的曝光與信任感。"
+      },
+      "metrics": [
+        {
+          "label": "Lighthouse",
+          "value": "99/100 滿分"
+        },
+        {
+          "label": "自然流量",
+          "value": "+140% 成長"
+        }
+      ],
+      "demoUrl": "https://kryptogo.com"
+    },
+    {
+      "id": "nft-quiz-campaign",
+      "title": "Web3 心理測驗裂變行銷 NFT 發放活動",
+      "subtitle": "重量科技 • 互動心理測驗、動態結果生成、智慧合約前端串接與社群裂變機制",
+      "tag": "互動體驗與行銷",
+      "category": "Interactive Campaign",
+      "year": "2022/8 — 2022/10",
+      "role": "前端工程師 / 企劃",
+      "company": "重量科技 (kryptoGO)",
+      "badge": "⚡ 5 萬人次互動",
+      "themeColor": "coral",
+      "summary": "主導心理測驗裂變行銷活動前端開發，打造流暢趣味題型轉場、個人專屬 NFT 徽章即時生成與社群一鍵分享，於一週內創造超過 50,000+ 人次測驗互動。",
+      "coverImage": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 活動企劃與背景\n\n為了降低一般大眾進入 Web3 錢包的門檻，我們設計了一套**趣味心理測驗活動**，用戶完成 5 道直覺測驗後，系統將即時運算其專屬「Web3 靈魂原型」，並免費鑄造領取限量 NFT 徽章。\n\n---\n\n## 核心互動亮點\n\n### 1. Canvas 即時高畫質分享圖渲染\n- 利用 HTML5 Canvas 與 WebGL 即時將用戶測驗結果、個性雷達圖與動態徽章合成為 1080x1920 高畫質圖卡，支援 Instagram Story 與 X 一鍵轉發。\n\n### 2. 趣味物理彈性轉場動畫\n- 題型切換搭配卡片翻轉與粒子散落音效，提升測驗完成率（Completion Rate）高達 **92%**。\n\n### 3. Web3 錢包秒級無感串接\n- 深度整合 kryptoGO Wallet SDK，用戶無需手動輸入助記詞即可完成空投領取。",
+      "painPoints": [
+        "Web3 進入門檻高，一般用戶缺乏參與動機",
+        "傳統行銷活動缺乏自發性社群傳播效應"
+      ],
+      "techStack": [
+        "React",
+        "HTML5 Canvas",
+        "Framer Motion",
+        "Web3 SDK",
+        "Tailwind CSS"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "打造沉浸式心理測驗互動流程，測驗完成率超過 92%",
+          "以 Canvas 即時合成個人專屬雷達圖卡，支援一鍵分享社群",
+          "串接 Web3 錢包 SDK 實現無痛 NFT 徽章領取"
+        ],
+        "animationHighlights": [
+          "卡片翻轉與選取選項時的細膩觸覺振動反饋",
+          "結果揭曉時的星芒粒子噴發與音效節奏同步"
+        ],
+        "usageScenarios": [
+          "社群大眾：透過趣味測驗認識自己並無痛取得第一張 NFT",
+          "行銷團隊：透過裂變分享獲得低成本、高黏著的新用戶成長"
+        ],
+        "clientPitch": "將複雜的 Web3 技術包裝為極具趣味的社群互動體驗，證明了優秀的前端互動是商業轉化的最佳推進器。"
+      },
+      "metrics": [
+        {
+          "label": "累積互動",
+          "value": "50,000+ 次"
+        },
+        {
+          "label": "完測率",
+          "value": "92% 高轉換"
+        }
+      ],
+      "demoUrl": "https://kryptogo.com"
+    },
+    {
+      "id": "weifeng-industry",
+      "title": "惟峰工業 傳統製造業品牌官網翻轉與 5S 流程優化",
+      "subtitle": "惟峰工業 • 企業品牌官網現代化、5S 工作流程數位化、Google 關鍵字搜尋第一頁",
+      "tag": "品牌數位轉型",
+      "category": "Brand Transformation & SEO",
+      "year": "2019/2 — 2022/11",
+      "role": "工程師 / 網站設計師",
+      "company": "惟峰工業",
+      "badge": "🏆 搜尋首頁第一名",
+      "themeColor": "mint",
+      "summary": "協助傳統工業品牌進行全面數位轉型，重新梳理 5S 製程標準化流程，並親自設計開發全新企業官網，成功將目標關鍵字推升至 Google 搜尋首頁第一名，海外詢價單翻倍成長。",
+      "coverImage": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 傳統製造業轉型挑戰\n\n惟峰工業為具備精密加工實力的傳統製造業，但面臨**舊官網資訊混亂**、**海外客戶難以搜尋**以及**內部廠區 5S 流程尚未標準化**的挑戰。\n\n---\n\n## 轉型策略與實施\n\n### 1. 5S 精實生產與流程可視化\n- 將廠區作業流程進行 5S（整理、整頓、清掃、清潔、素養）標準化梳理，製作高清晰圖解製程指南。\n\n### 2. 現代化官網架構與技術 SEO\n- 重新規劃產品目錄分類、技術規格參數表與多語系架構。\n- 嚴格執行結構化資料 (Schema Markup) 與語意化 HTML，關鍵字直接登頂 Google 搜尋首頁第一名。\n\n---\n\n## 商業效益\n- 海外客戶線上詢價單月均成長 **+180%**，成功拓展歐美精密製造外銷訂單。",
+      "painPoints": [
+        "傳統工廠缺乏現代化數位形象，錯失海外訂單機會",
+        "製程規格缺乏系統化數位呈現"
+      ],
+      "techStack": [
+        "React",
+        "SEO Optimization",
+        "UI/UX Design",
+        "5S Methodology",
+        "Figma"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "全面重構企業官網，成功將核心產品關鍵字推上 Google 搜尋第一名",
+          "梳理工業 5S 製程可視化手冊，提升生產與溝通效率",
+          "建立標準化海外詢價表單系統，詢價量翻倍成長"
+        ],
+        "animationHighlights": [
+          "工業製程 3D 結構分解視差滾動與技術規格互動切換"
+        ],
+        "usageScenarios": [
+          "海外採購經理：透過 Google 快速找到精確規格並一鍵送出詢價單",
+          "廠區人員：遵循標準化 5S 可視化流程進行高效生產"
+        ],
+        "clientPitch": "不只做表面設計，更深入產業核心痛點，結合 5S 流程與前端 SEO 技術，帶來真金白銀的海外商業訂單。"
+      },
+      "metrics": [
+        {
+          "label": "Google 排名",
+          "value": "Top 1 第一名"
+        },
+        {
+          "label": "海外詢價",
+          "value": "+180% 成長"
+        }
+      ],
+      "demoUrl": "https://weifeng.com"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inq-01",
+      "name": "Sarah Chen",
+      "company": "NextGen FinTech Ltd.",
+      "email": "sarah.chen@nextgen.io",
+      "scope": "全職 - 資深前端工程師",
+      "budget": "月薪 90,000 ~ 110,000 元",
+      "message": "令成您好，在作品集看到您在海宇顧問的 Monorepo 與 Jotai 架構實作非常驚艷！我們團隊正要進行新一代 Web3 金融交易大廳重構，希望邀請您聊聊全職資深前端的合作機會！",
+      "status": "unread",
+      "createdAt": "2026-08-20T14:30:00Z"
+    },
+    {
+      "id": "inq-02",
+      "name": "Marcus Lin",
+      "company": "Krypto Ventures",
+      "email": "marcus@kryptoventures.com",
+      "scope": "專案合作 - Design System 建置",
+      "budget": "專案預算 20 萬+",
+      "message": "您好！我們欣賞您在 kryptoGO 官網的滿分 SEO 與 Gsap 動畫細節，想委託您協助打造我們創投品牌的 Design System 與官網改版，請問近期是否有檔期？",
+      "status": "replied",
+      "createdAt": "2026-08-19T09:15:00Z"
+    }
+  ]
+}
