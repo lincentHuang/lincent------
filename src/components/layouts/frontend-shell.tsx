@@ -115,9 +115,9 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
           />
 
           {/* Slide-out Drawer Panel */}
-          <div className="relative w-[88%] max-w-[360px] h-full bg-[#F7F7F8] shadow-2xl flex flex-col z-10 overflow-y-auto">
+          <div className="relative w-[88%] max-w-[360px] h-full bg-[#F7F7F8] shadow-2xl flex flex-col z-10 overflow-hidden">
             {/* Drawer Close Button */}
-            <div className="flex items-center justify-between p-4 border-b border-slate-200/80 bg-white/80">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200/80 bg-white/80 shrink-0">
               <span className="font-sans font-bold text-sm tracking-tight text-slate-900">
                 Navigation
               </span>
@@ -131,7 +131,7 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
             </div>
 
             {/* Sidebar Content inside Drawer */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 min-h-0 overflow-hidden">
               <GlobalSidebar
                 onItemClick={() => setIsMobileMenuOpen(false)}
                 activeProjectId={activeProjectId}
@@ -143,8 +143,7 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
 
       {/* 3. DESKTOP STICKY SIDEBAR */}
       <aside
-        className="hidden lg:block w-[360px] xl:w-[380px] shrink-0 basis-[360px] xl:basis-[380px] sticky top-0 h-screen max-h-screen overflow-y-auto border-r border-slate-200/80 bg-[#F7F7F8] z-30"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="hidden lg:block w-[360px] xl:w-[380px] shrink-0 basis-[360px] xl:basis-[380px] sticky top-0 h-screen max-h-screen overflow-hidden border-r border-slate-200/80 bg-[#F7F7F8] z-30"
       >
         <GlobalSidebar activeProjectId={activeProjectId} />
       </aside>

@@ -14,7 +14,6 @@ import { ProjectBadgeIcon, getShortProjectTitle } from '../../features/projects/
 import {
   Globe,
   Search,
-  ArrowUpRight,
   Mail,
   Lock,
 } from 'lucide-react';
@@ -88,13 +87,13 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
     }
   };
 
-  const isHome = pathname === '/';
   const isProjects = pathname.startsWith('/projects');
 
   return (
-    <aside className="w-full h-full flex flex-col justify-between py-5 px-4 sm:px-5 lg:py-6 lg:px-5 text-[#121218]">
-      <div className="flex flex-col gap-4 w-full">
-        {/* 1. BRAND PROFILE CARD */}
+    <aside className="w-full h-full flex flex-col text-[#121218] overflow-hidden select-none">
+      {/* 1. TOP HEADER & SEARCH (PINNED AT TOP) */}
+      <div className="p-4 sm:p-5 pb-2 shrink-0 flex flex-col gap-3.5 w-full">
+        {/* BRAND PROFILE CARD */}
         <Link
           href="/"
           onClick={onItemClick}
@@ -124,78 +123,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
           </div>
         </Link>
 
-        {/* 2. NAVIGATION LINKS & GLOBAL CONTROLS */}
-        <div className="rounded-2xl bg-white border border-slate-200/80 p-3 shadow-xs flex flex-col gap-2.5">
-          {/* Quick Nav Pills */}
-          <nav className="flex items-center flex-wrap gap-1.5 text-xs font-medium">
-            <Link
-              href="/"
-              onClick={onItemClick}
-              className={`px-3 py-1.5 rounded-xl transition-all ${
-                isHome
-                  ? 'bg-[#121218] text-white font-semibold shadow-xs'
-                  : 'text-slate-600 hover:text-black hover:bg-slate-100'
-              }`}
-            >
-              {t.nav.home}
-            </Link>
-            <Link
-              href="/projects"
-              onClick={onItemClick}
-              className={`px-3 py-1.5 rounded-xl transition-all ${
-                isProjects
-                  ? 'bg-[#121218] text-white font-semibold shadow-xs'
-                  : 'text-slate-600 hover:text-black hover:bg-slate-100'
-              }`}
-            >
-              {t.nav.works}
-            </Link>
-            <Link
-              href="/#benefits"
-              onClick={onItemClick}
-              className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
-            >
-              {t.nav.about}
-            </Link>
-            <Link
-              href="/#services"
-              onClick={onItemClick}
-              className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
-            >
-              {t.nav.services}
-            </Link>
-            <Link
-              href="/#contact"
-              onClick={onItemClick}
-              className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
-            >
-              {t.nav.contact}
-            </Link>
-          </nav>
-
-          {/* Action Row: Language Switch & Let's talk CTA */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100 gap-2">
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 transition-all active:scale-95"
-              title="切換語言 / Switch Language"
-            >
-              <Globe className="w-3.5 h-3.5 text-slate-500" />
-              <span>{lang === 'zh' ? '繁中' : 'EN'}</span>
-            </button>
-
-            <Link
-              href="/#contact"
-              onClick={onItemClick}
-              className="flex-1 flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#121218] text-white text-xs font-semibold hover:bg-black transition-all hover:scale-[1.02] active:scale-95 shadow-xs"
-            >
-              <span>{t.nav.letsTalk}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-
-        {/* 3. SEARCH FILTER INPUT */}
+        {/* SEARCH FILTER INPUT */}
         <div className="relative w-full">
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
@@ -214,104 +142,118 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
             </button>
           )}
         </div>
-
-        {/* 4. STACKING PROJECT CARDS */}
-        <div className="flex flex-col gap-2.5 w-full max-h-[calc(100vh-380px)] overflow-y-auto pr-1 pb-4 overscroll-contain">
-          <div className="flex items-center justify-between px-1 text-[11px] font-mono text-slate-400 uppercase tracking-wider">
-            <span>{t.projects.featuredTitle}</span>
-            <span>{filteredProjects.length}</span>
-          </div>
-
-          {filteredProjects.map((proj, idx) => {
-            const isActive = isProjects && proj.id === currentActiveId;
-            const title = getShortProjectTitle(proj, lang);
-            const summary = isEn ? proj.summaryEn || proj.summary : proj.summary;
-            const tags = (proj.techStack || []).slice(0, 3);
-
-            return (
-              <button
-                key={proj.id}
-                onClick={() => handleSelectProject(proj)}
-                style={{
-                  position: 'sticky',
-                  top: `${Math.min(idx * 4, 32)}px`,
-                  zIndex: idx + 1,
-                }}
-                className={`group text-left w-full rounded-2xl p-3.5 transition-all duration-300 border relative overflow-hidden select-none ${
-                  isActive
-                    ? 'bg-[#121218] text-white border-[#121218] shadow-md scale-[1.01]'
-                    : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-sm'
-                }`}
-              >
-                {isActive && (
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent pointer-events-none rounded-tr-2xl" />
-                )}
-
-                <div className="flex items-start gap-3">
-                  <ProjectBadgeIcon id={proj.id} className="w-5 h-5" />
-
-                  <div className="flex-1 min-w-0 space-y-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <h4
-                        className={`font-sans font-bold text-sm tracking-tight truncate ${
-                          isActive ? 'text-white' : 'text-slate-900 group-hover:text-black'
-                        }`}
-                      >
-                        {title}
-                      </h4>
-                      {proj.isNew && (
-                        <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded-full bg-lime-400 text-[#121218]">
-                          NEW
-                        </span>
-                      )}
-                    </div>
-
-                    <p
-                      className={`text-xs font-normal leading-relaxed line-clamp-2 ${
-                        isActive ? 'text-slate-300' : 'text-slate-500'
-                      }`}
-                    >
-                      {summary}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1 pt-1">
-                      {tags.map((t) => (
-                        <span
-                          key={t}
-                          className={`text-[10px] font-medium px-2 py-0.5 rounded-md border transition-colors ${
-                            isActive
-                              ? 'bg-white/10 border-white/15 text-slate-200'
-                              : 'bg-slate-50 border-slate-200 text-slate-600'
-                          }`}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-
-          {filteredProjects.length === 0 && (
-            <div className="p-6 text-center bg-white rounded-2xl border border-slate-200 text-slate-400 text-xs font-mono">
-              {t.projects.notFound}
-            </div>
-          )}
-        </div>
       </div>
 
-      {/* 5. SIDEBAR FOOTER: AVAILABILITY & SOCIAL LINKS */}
-      <div className="pt-4 border-t border-slate-200/80 mt-auto flex flex-col gap-3">
-        {/* Status Indicator */}
-        <div className="flex items-center gap-2 px-1 text-[11px] font-medium text-emerald-600">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>{t.common.availableForProjects}</span>
+      {/* 2. SCROLLABLE PROJECT CARDS LIST (FILLS REMAINING SPACE) */}
+      <div
+        className="flex-1 min-h-0 overflow-y-auto px-4 sm:px-5 py-2 flex flex-col gap-2.5 overscroll-contain"
+        style={{ scrollbarWidth: 'thin' }}
+      >
+        <div className="flex items-center justify-between px-1 text-[11px] font-mono text-slate-400 uppercase tracking-wider shrink-0">
+          <span>{t.projects.featuredTitle}</span>
+          <span>{filteredProjects.length}</span>
+        </div>
+
+        {filteredProjects.map((proj, idx) => {
+          const isActive = isProjects && proj.id === currentActiveId;
+          const title = getShortProjectTitle(proj, lang);
+          const summary = isEn ? proj.summaryEn || proj.summary : proj.summary;
+          const tags = (proj.techStack || []).slice(0, 3);
+
+          return (
+            <button
+              key={proj.id}
+              onClick={() => handleSelectProject(proj)}
+              style={{
+                position: 'sticky',
+                top: `${Math.min(idx * 4, 32)}px`,
+                zIndex: idx + 1,
+              }}
+              className={`group text-left w-full rounded-2xl p-3.5 transition-all duration-300 border relative overflow-hidden select-none ${
+                isActive
+                  ? 'bg-[#121218] text-white border-[#121218] shadow-md scale-[1.01]'
+                  : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200 hover:border-slate-300 shadow-xs hover:shadow-sm'
+              }`}
+            >
+              {isActive && (
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/10 to-transparent pointer-events-none rounded-tr-2xl" />
+              )}
+
+              <div className="flex items-start gap-3">
+                <ProjectBadgeIcon id={proj.id} className="w-5 h-5" />
+
+                <div className="flex-1 min-w-0 space-y-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4
+                      className={`font-sans font-bold text-sm tracking-tight truncate ${
+                        isActive ? 'text-white' : 'text-slate-900 group-hover:text-black'
+                      }`}
+                    >
+                      {title}
+                    </h4>
+                    {proj.isNew && (
+                      <span className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded-full bg-lime-400 text-[#121218]">
+                        NEW
+                      </span>
+                    )}
+                  </div>
+
+                  <p
+                    className={`text-xs font-normal leading-relaxed line-clamp-2 ${
+                      isActive ? 'text-slate-300' : 'text-slate-500'
+                    }`}
+                  >
+                    {summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-1 pt-1">
+                    {tags.map((t) => (
+                      <span
+                        key={t}
+                        className={`text-[10px] font-medium px-2 py-0.5 rounded-md border transition-colors ${
+                          isActive
+                            ? 'bg-white/10 border-white/15 text-slate-200'
+                            : 'bg-slate-50 border-slate-200 text-slate-600'
+                        }`}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </button>
+          );
+        })}
+
+        {filteredProjects.length === 0 && (
+          <div className="p-6 text-center bg-white rounded-2xl border border-slate-200 text-slate-400 text-xs font-mono">
+            {t.projects.notFound}
+          </div>
+        )}
+      </div>
+
+      {/* 3. SIDEBAR FOOTER (FIXED PINNED AT BOTTOM) */}
+      <div className="shrink-0 p-4 sm:p-5 pt-3 border-t border-slate-200/80 bg-[#F7F7F8] flex flex-col gap-2.5 z-20 shadow-[0_-4px_16px_rgba(0,0,0,0.02)]">
+        {/* Status Indicator & Language Switcher */}
+        <div className="flex items-center justify-between gap-2 px-1">
+          <div className="flex items-center gap-2 text-[11px] font-medium text-emerald-600 min-w-0">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+            <span className="truncate">{t.common.availableForProjects}</span>
+          </div>
+
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 transition-all active:scale-95 shrink-0 shadow-2xs"
+            title="切換語言 / Switch Language"
+          >
+            <Globe className="w-3.5 h-3.5 text-slate-500" />
+            <span>{lang === 'zh' ? '繁中' : 'EN'}</span>
+          </button>
         </div>
 
         {/* Social Icons & Admin link */}
-        <div className="flex items-center justify-between px-1 text-slate-500 text-xs">
+        <div className="flex items-center justify-between px-1 text-slate-500 text-xs pt-1 border-t border-slate-200/50">
           <div className="flex items-center gap-3">
             <a
               href="https://github.com/lincentt"
