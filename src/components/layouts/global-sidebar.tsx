@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAtom } from 'jotai';
 import {
-  langAtom,
   projectsAtom,
   selectedProjectAtom,
   ProjectItem,
 } from '../../store/atoms';
+import { useI18n } from '../../i18n';
 import { ProjectBadgeIcon, getShortProjectTitle } from '../../features/projects/components/project-badge-icon';
 import {
   Globe,
@@ -44,7 +44,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
   onItemClick,
   activeProjectId,
 }) => {
-  const [lang, setLang] = useAtom(langAtom);
+  const { lang, toggleLang, t, isEn } = useI18n();
   const [projects] = useAtom(projectsAtom);
   const [selectedProject, setSelectedProject] = useAtom(selectedProjectAtom);
   const pathname = usePathname();
@@ -61,10 +61,6 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
     }
     return selectedProject?.id || (projects.length > 0 ? projects[0].id : '');
   }, [activeProjectId, pathname, selectedProject, projects]);
-
-  const toggleLanguage = () => {
-    setLang((prev) => (prev === 'zh' ? 'en' : 'zh'));
-  };
 
   // Filter projects by search query
   const filteredProjects = useMemo(() => {
@@ -120,7 +116,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-normal mt-1 leading-snug line-clamp-2">
-                {lang === 'en'
+                {isEn
                   ? 'Crafting refined digital products, design systems & frontend architecture.'
                   : '打造頂級品牌、現代架構與極致視覺。'}
               </p>
@@ -141,7 +137,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
                   : 'text-slate-600 hover:text-black hover:bg-slate-100'
               }`}
             >
-              {lang === 'en' ? 'Home' : '首頁'}
+              {t.nav.home}
             </Link>
             <Link
               href="/projects"
@@ -152,35 +148,35 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
                   : 'text-slate-600 hover:text-black hover:bg-slate-100'
               }`}
             >
-              {lang === 'en' ? 'Works' : '作品集庫'}
+              {t.nav.works}
             </Link>
             <Link
               href="/#benefits"
               onClick={onItemClick}
               className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
             >
-              {lang === 'en' ? 'About' : '關於'}
+              {t.nav.about}
             </Link>
             <Link
               href="/#services"
               onClick={onItemClick}
               className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
             >
-              {lang === 'en' ? 'Services' : '專案服務'}
+              {t.nav.services}
             </Link>
             <Link
               href="/#contact"
               onClick={onItemClick}
               className="px-3 py-1.5 rounded-xl text-slate-600 hover:text-black hover:bg-slate-100 transition-all"
             >
-              {lang === 'en' ? 'Contact' : '聯絡'}
+              {t.nav.contact}
             </Link>
           </nav>
 
           {/* Action Row: Language Switch & Let's talk CTA */}
           <div className="flex items-center justify-between pt-2 border-t border-slate-100 gap-2">
             <button
-              onClick={toggleLanguage}
+              onClick={toggleLang}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-700 transition-all active:scale-95"
               title="切換語言 / Switch Language"
             >
@@ -193,7 +189,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
               onClick={onItemClick}
               className="flex-1 flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#121218] text-white text-xs font-semibold hover:bg-black transition-all hover:scale-[1.02] active:scale-95 shadow-xs"
             >
-              <span>{lang === 'en' ? "Let's talk" : '聯繫合作'}</span>
+              <span>{t.nav.letsTalk}</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -206,9 +202,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={
-              lang === 'en' ? 'Search works, tags, stacks...' : '搜尋專案、技術棧、關鍵字...'
-            }
+            placeholder={t.projects.searchPlaceholder}
             className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-slate-200/90 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#121218] transition-all shadow-xs"
           />
           {searchQuery && (
@@ -224,14 +218,14 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
         {/* 4. STACKING PROJECT CARDS */}
         <div className="flex flex-col gap-2.5 w-full max-h-[calc(100vh-380px)] overflow-y-auto pr-1 pb-4 overscroll-contain">
           <div className="flex items-center justify-between px-1 text-[11px] font-mono text-slate-400 uppercase tracking-wider">
-            <span>{lang === 'en' ? 'Featured Works' : '代表作品'}</span>
+            <span>{t.projects.featuredTitle}</span>
             <span>{filteredProjects.length}</span>
           </div>
 
           {filteredProjects.map((proj, idx) => {
             const isActive = isProjects && proj.id === currentActiveId;
             const title = getShortProjectTitle(proj, lang);
-            const summary = lang === 'en' ? proj.summaryEn || proj.summary : proj.summary;
+            const summary = isEn ? proj.summaryEn || proj.summary : proj.summary;
             const tags = (proj.techStack || []).slice(0, 3);
 
             return (
@@ -302,7 +296,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
 
           {filteredProjects.length === 0 && (
             <div className="p-6 text-center bg-white rounded-2xl border border-slate-200 text-slate-400 text-xs font-mono">
-              {lang === 'en' ? 'No works found' : '無符合條件的專案'}
+              {t.projects.notFound}
             </div>
           )}
         </div>
@@ -313,7 +307,7 @@ export const GlobalSidebar: React.FC<GlobalSidebarProps> = ({
         {/* Status Indicator */}
         <div className="flex items-center gap-2 px-1 text-[11px] font-medium text-emerald-600">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>{lang === 'en' ? 'Available for projects' : '可接受新專案合作'}</span>
+          <span>{t.common.availableForProjects}</span>
         </div>
 
         {/* Social Icons & Admin link */}

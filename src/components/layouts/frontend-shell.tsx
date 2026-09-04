@@ -7,8 +7,8 @@ import {
   projectsAtom,
   siteConfigAtom,
   modularCardsAtom,
-  langAtom,
 } from '../../store/atoms';
+import { useI18n } from '../../i18n';
 import { GlobalSidebar } from './global-sidebar';
 import { Globe, Menu, X } from 'lucide-react';
 
@@ -24,7 +24,7 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
   const [projects, setProjects] = useAtom(projectsAtom);
   const [, setSiteConfig] = useAtom(siteConfigAtom);
   const [, setModularCards] = useAtom(modularCardsAtom);
-  const [lang, setLang] = useAtom(langAtom);
+  const { lang, toggleLang, t } = useI18n();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -61,10 +61,6 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
     loadInitialData();
   }, [projects.length, setProjects, setSiteConfig, setModularCards]);
 
-  const toggleLanguage = () => {
-    setLang((prev) => (prev === 'zh' ? 'en' : 'zh'));
-  };
-
   return (
     <div className="min-h-screen bg-[#F7F7F8] text-[#121218] flex flex-col lg:flex-row w-full selection:bg-lime-400 selection:text-[#121218] relative">
       {/* 1. MOBILE RESPONSIVE TOP BAR */}
@@ -83,7 +79,7 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
         <div className="flex items-center gap-2">
           {/* Quick Language Toggle */}
           <button
-            onClick={toggleLanguage}
+            onClick={toggleLang}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-xs active:scale-95"
           >
             <Globe className="w-3.5 h-3.5 text-slate-500" />
@@ -95,7 +91,7 @@ export const FrontendShell: React.FC<FrontendShellProps> = ({
             href="/#contact"
             className="px-3 py-1.5 rounded-lg bg-[#121218] text-white text-xs font-semibold hover:bg-black shadow-xs"
           >
-            {lang === 'en' ? 'Talk' : '洽談'}
+            {t.common.talk}
           </Link>
 
           {/* Mobile Menu Hamburger Toggle */}

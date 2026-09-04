@@ -3,11 +3,11 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useAtom } from 'jotai';
 import {
-  langAtom,
   projectsAtom,
   selectedProjectAtom,
   ProjectItem,
 } from '../../../store/atoms';
+import { useI18n } from '../../../i18n';
 import { MarkdownRenderer } from './markdown-renderer';
 import { ProjectBadgeIcon, getShortProjectTitle } from './project-badge-icon';
 import {
@@ -28,7 +28,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
   initialProjects = [],
   initialSelectedId,
 }) => {
-  const [lang] = useAtom(langAtom);
+  const { t, lang, isEn } = useI18n();
   const [globalProjects, setGlobalProjects] = useAtom(projectsAtom);
   const [selectedProject, setSelectedProject] = useAtom(selectedProjectAtom);
 
@@ -146,7 +146,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
           </div>
 
           <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-xl">
-            {lang === 'en'
+            {isEn
               ? activeProject.subtitleEn || activeProject.summaryEn || activeProject.summary
               : activeProject.subtitle || activeProject.summary}
           </p>
@@ -176,7 +176,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
                 rel="noreferrer"
                 className="px-5 py-2.5 rounded-full bg-[#121218] hover:bg-black text-white text-xs font-semibold flex items-center gap-2 shadow-xs transition-all hover:scale-105 active:scale-95"
               >
-                <span>{lang === 'en' ? 'Live Demo' : '線上體驗'}</span>
+                <span>{t.projects.liveDemo}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
@@ -185,7 +185,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
               onClick={() => setShowDeepDive(!showDeepDive)}
               className="px-4 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-slate-300 text-xs font-semibold text-slate-800 flex items-center gap-1.5 shadow-xs transition-all"
             >
-              <span>{showDeepDive ? (lang === 'en' ? 'Hide Technical Notes' : '收合技術筆記') : (lang === 'en' ? 'Technical Notes' : '技術架構筆記')}</span>
+              <span>{showDeepDive ? t.projects.hideTechNotes : t.projects.techNotes}</span>
               {showDeepDive ? (
                 <ChevronUp className="w-3.5 h-3.5" />
               ) : (
@@ -212,7 +212,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
 
           <div className="flex items-center justify-between z-10">
             <span className="px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-mono tracking-wider text-slate-300">
-              01 / {lang === 'en' ? 'Visual & Mockup' : '視覺與系統呈現'}
+              01 / {isEn ? 'Visual & Mockup' : '視覺與系統呈現'}
             </span>
             <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-slate-300 group-hover:scale-110 transition-transform">
               <Maximize2 className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-600">
-                02 / {lang === 'en' ? 'Architecture & Metrics' : '架構與指標'}
+                02 / {isEn ? 'Architecture & Metrics' : '架構與指標'}
               </span>
               <span className="text-xs font-mono text-slate-400">Specs & Metrics</span>
             </div>
@@ -251,7 +251,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
             </h3>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              {lang === 'en'
+              {isEn
                 ? activeProject.summaryEn || activeProject.summary
                 : activeProject.summary}
             </p>
@@ -382,7 +382,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({
           {activeProject.painPoints && activeProject.painPoints.length > 0 && (
             <div className="space-y-3 p-5 rounded-2xl bg-slate-50 border border-slate-200">
               <h4 className="text-xs font-mono font-bold uppercase text-slate-500">
-                關鍵痛點與解決方案 (Challenges Solved)
+                {t.projects.challengesSolved}
               </h4>
               <ul className="space-y-1.5 text-xs sm:text-sm text-slate-700">
                 {activeProject.painPoints.map((p, idx) => (

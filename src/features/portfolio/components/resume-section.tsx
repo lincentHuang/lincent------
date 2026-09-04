@@ -1,28 +1,25 @@
 'use client';
 
 import React from 'react';
-import { useAtom } from 'jotai';
-import { langAtom } from '../../../store/atoms';
+import { useI18n } from '../../../i18n';
 import { CheckCircle2, GraduationCap } from 'lucide-react';
 import { resumeData } from '../../../data/resumeData';
 
 export const ResumeSection: React.FC = () => {
-  const [lang] = useAtom(langAtom);
+  const { t } = useI18n();
 
   return (
     <section id="experience" className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {lang === 'en' ? 'Experience' : '經歷與技能'}
+          {t.experience.tag}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {lang === 'en' ? 'Career journey & expertise' : '專業經歷與深厚技術積累'}
+          {t.experience.title}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {lang === 'en'
-            ? '5+ years of full lifecycle frontend engineering, architecture design, and performance tuning.'
-            : '擁有 5+ 年大中型產品研發實戰，具備從需求分析、架構選型到效能調優的完整落地經驗。'}
+          {t.experience.subtitle}
         </p>
       </div>
 
@@ -31,7 +28,7 @@ export const ResumeSection: React.FC = () => {
         <div className="lg:col-span-7 space-y-6">
           <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-lime-600" />
-            <span>{lang === 'en' ? 'Work History' : '工作經歷'}</span>
+            <span>{t.experience.workHistory}</span>
           </h3>
 
           <div className="space-y-4">
@@ -95,7 +92,7 @@ export const ResumeSection: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-purple-600" />
-            <span>{lang === 'en' ? 'Core Capabilities' : '核心技術棧'}</span>
+            <span>{t.experience.coreStack}</span>
           </h3>
 
           <div className="p-6 sm:p-7 portfolio-card space-y-6">
@@ -178,10 +175,10 @@ export const ResumeSection: React.FC = () => {
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-900">
-                {lang === 'en' ? 'Computer Science & Design Craft' : '設計與資工跨界整合'}
+                {t.experience.educationTitle}
               </h4>
               <span className="text-xs font-mono text-slate-500">
-                {lang === 'en' ? 'Balancing engineering rigor with aesthetic excellence' : '追求工程嚴謹度與美感極致平衡'}
+                {t.experience.educationDesc}
               </span>
             </div>
           </div>

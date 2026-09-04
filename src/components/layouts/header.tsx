@@ -3,17 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useAtom } from 'jotai';
-import { langAtom } from '../../store/atoms';
+import { useI18n } from '../../i18n';
 import { ArrowUpRight, Globe } from 'lucide-react';
 
 export const Header: React.FC = () => {
-  const [lang, setLang] = useAtom(langAtom);
+  const { lang, toggleLang, t } = useI18n();
   const pathname = usePathname();
-
-  const toggleLanguage = () => {
-    setLang((prev) => (prev === 'zh' ? 'en' : 'zh'));
-  };
 
   const isProjectsActive = pathname === '/projects';
   const isHomeActive = pathname === '/';
@@ -40,10 +35,10 @@ export const Header: React.FC = () => {
             isHomeActive ? 'text-black font-semibold' : 'hover:text-black'
           }`}
         >
-          {lang === 'en' ? 'Home' : '首頁'}
+          {t.nav.home}
         </Link>
         <Link href="/#benefits" className="hover:text-black transition-colors">
-          {lang === 'en' ? 'About' : '關於'}
+          {t.nav.about}
         </Link>
         <Link
           href="/projects"
@@ -51,20 +46,20 @@ export const Header: React.FC = () => {
             isProjectsActive ? 'text-black font-semibold' : 'hover:text-black'
           }`}
         >
-          {lang === 'en' ? 'Projects' : '作品集庫'}
+          {t.nav.projects}
         </Link>
         <Link href="/#services" className="hover:text-black transition-colors">
-          {lang === 'en' ? 'Services' : '專案服務'}
+          {t.nav.services}
         </Link>
         <Link href="/#contact" className="hover:text-black transition-colors">
-          {lang === 'en' ? 'Contact' : '聯絡'}
+          {t.nav.contact}
         </Link>
       </nav>
 
       {/* Right Controls: Language Switch & Let's talk CTA */}
       <div className="flex items-center gap-3">
         <button
-          onClick={toggleLanguage}
+          onClick={toggleLang}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-white hover:bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 transition-all shadow-xs active:scale-95"
           title="切換語言 / Switch Language"
         >
@@ -76,7 +71,7 @@ export const Header: React.FC = () => {
           href="/#contact"
           className="flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#121218] text-white text-xs font-semibold hover:bg-black transition-all hover:scale-105 active:scale-95 shadow-xs"
         >
-          <span>{lang === 'en' ? "Let's talk" : '聯繫合作'}</span>
+          <span>{t.nav.letsTalk}</span>
           <ArrowUpRight className="w-3.5 h-3.5" />
         </Link>
       </div>

@@ -2,12 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useAtom } from 'jotai';
-import { langAtom } from '../../store/atoms';
+import { useI18n } from '../../i18n';
 import { ArrowUp, Code2, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [lang] = useAtom(langAtom);
+  const { t } = useI18n();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -21,26 +20,26 @@ export const Footer: React.FC = () => {
             Lincent Huang
           </span>
           <p className="text-xs text-slate-500 font-mono">
-            {lang === 'en' ? 'Senior Frontend Architect • Taipei, Taiwan' : '資深前端架構師 • 台灣台北'}
+            {t.footer.role}
           </p>
         </div>
 
         {/* Links */}
         <div className="flex items-center gap-6 text-xs font-medium text-slate-600">
           <a href="#benefits" className="hover:text-black transition-colors">
-            {lang === 'en' ? 'Benefits' : '優勢'}
+            {t.nav.benefits}
           </a>
           <Link href="/projects" className="hover:text-black transition-colors">
-            {lang === 'en' ? 'Projects' : '作品集庫'}
+            {t.nav.projects}
           </Link>
           <a href="#services" className="hover:text-black transition-colors">
-            {lang === 'en' ? 'Services' : '服務'}
+            {t.nav.services}
           </a>
           <a href="#process" className="hover:text-black transition-colors">
-            {lang === 'en' ? 'Process' : '流程'}
+            {t.nav.process}
           </a>
           <a href="#experience" className="hover:text-black transition-colors">
-            {lang === 'en' ? 'Experience' : '經歷'}
+            {t.nav.experience}
           </a>
         </div>
 
