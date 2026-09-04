@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { AmbientBackground } from '../components/layouts/ambient-background';
 
 export const metadata: Metadata = {
-  title: '黃令成 (Lincent) — 資深前端工程師 ✕ 兼具設計底蘊與商業思維',
-  description: '黃令成 (Lincent) 的個人作品集與履歷系統。5~6 年前端開發與 UI/UX 經驗，專注於 Monorepo 架構、Jotai 原子化狀態管理、Design System 與極致使用者體驗。',
+  title: 'Lincent Huang | Senior Frontend Architect & Product Engineer',
+  description: 'A premium portfolio showcasing modern frontend architecture, design systems, and high-performance web applications.',
   icons: {
-    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="28" fill="%23FFD23F"/><text y="68" x="50" font-size="52" font-weight="900" font-family="sans-serif" text-anchor="middle" fill="%230F172A">L</text></svg>',
+    icon: '/images/lincent-logo.svg',
+    apple: '/images/lincent-logo.png',
   },
 };
 
@@ -15,16 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-Hant" className="dark scroll-smooth">
+    <html lang="zh-TW" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased selection:bg-accent-yellow selection:text-slate-950 transition-colors duration-300">
+      <body className="font-sans antialiased text-[#121218] bg-[#F7F7F8] selection:bg-[#A2E435] selection:text-[#121218]">
         {children}
       </body>
     </html>

@@ -8,29 +8,84 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Project {
-  id           String   @id
-  title        String
-  subtitle     String
-  tag          String
-  category     String
-  year         String
-  role         String
-  company      String
-  badge        String?
-  themeColor   String   @default("yellow")
-  isNew        Boolean  @default(true)
-  summary      String
-  coverImage   String?
-  contentMd    String?
-  painPoints   String   // JSON stringified string[]
-  techStack    String   // JSON stringified string[]
-  aiHighlights String   // JSON stringified AI highlights object
-  metrics      String   // JSON stringified metric objects
-  demoUrl      String?
-  githubUrl    String?
+model SiteConfig {
+  id                String   @id @default("default")
+  heroTitleZh       String   @default("CRAFTING DIGITAL EXPERIENCES WITH MODERN ARCHITECTURE.")
+  heroTitleEn       String   @default("CRAFTING DIGITAL EXPERIENCES WITH MODERN ARCHITECTURE.")
+  heroSubtitleZh    String   @default("資深前端工程師 • 黃令成 (Lincent)")
+  heroSubtitleEn    String   @default("Senior Frontend Architect & Engineer • Lincent Huang")
+  bioZh             String   @default("專注於現代前端架構、極致效能優化與細緻互動體驗設計。深耕 Monorepo 模組化、原子狀態管理與 Design System，讓產品兼具工程嚴謹與視覺美學。")
+  bioEn             String   @default("Specializing in modern frontend architecture, extreme performance optimization, and interactive experiences. Deep expertise in Monorepos, atomic state management, and enterprise Design Systems.")
+  statusTagZh       String   @default("可隨時到職 • 接受全職 / 專案合作")
+  statusTagEn       String   @default("Available for Full-time & Project Opportunities")
+  yearsOfExp        String   @default("5+ Years")
+  uiComponentsCount String   @default("80+ UI")
+  lighthouseScore   String   @default("99 / 100")
+  locationZh        String   @default("台灣台北 • 支援遠端")
+  locationEn        String   @default("Taipei, Taiwan • Remote Friendly")
+  email             String   @default("lincent.work@gmail.com")
+  githubUrl         String   @default("https://github.com")
+  linkedinUrl       String   @default("https://linkedin.com")
+  updatedAt         DateTime @updatedAt
+
+  @@map("site_configs")
+}
+
+model ModularCard {
+  id           String   @id @default(cuid())
+  type         String   @default("skill") // skill, tool, service, metric
+  titleZh      String
+  titleEn      String
+  descZh       String
+  descEn       String
+  tagZh        String?
+  tagEn        String?
+  icon         String?  @default("Code2")
+  color        String?  @default("cyan") // cyan, violet, rose, emerald, amber
+  metricsValue String?
+  items        String?  // JSON string array of items/tech stack
+  order        Int      @default(0)
+  isVisible    Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  @@map("modular_cards")
+}
+
+model Project {
+  id             String   @id
+  title          String
+  titleEn        String?
+  subtitle       String?
+  subtitleEn     String?
+  tag            String
+  tagEn          String?
+  category       String
+  categoryEn     String?
+  year           String
+  role           String
+  roleEn         String?
+  company        String
+  companyEn      String?
+  badge          String?
+  badgeEn        String?
+  themeColor     String   @default("yellow")
+  isNew          Boolean  @default(true)
+  summary        String
+  summaryEn      String?
+  coverImage     String?
+  contentMd      String?
+  contentMdEn    String?
+  painPoints     String   // JSON string of string[]
+  painPointsEn   String?  // JSON string of string[]
+  techStack      String   // JSON string of string[]
+  aiHighlights   String   // JSON string of AI highlights object
+  aiHighlightsEn String?  // JSON string of English AI highlights object
+  metrics        String   // JSON string of metric objects
+  demoUrl        String?
+  githubUrl      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   @@map("projects")
 }

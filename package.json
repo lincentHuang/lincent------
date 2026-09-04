@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev -p 3012",
     "build": "next build",
     "start": "next start -p 3001",
     "lint": "next lint"
@@ -18,8 +18,10 @@
     "next": "^14.2.24",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "server-only": "^0.0.1",
     "sharp": "^0.35.3",
-    "tailwind-merge": "^3.0.1"
+    "tailwind-merge": "^3.0.1",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",

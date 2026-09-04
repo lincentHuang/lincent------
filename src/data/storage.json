@@ -3,23 +3,31 @@
     {
       "id": "cms-playground",
       "title": "Cms Playground 跨主題遊戲平台架構",
+      "titleEn": "Cms Playground 跨主題遊戲平台架構",
       "subtitle": "新加坡商海宇顧問 • Turborepo Monorepo、Jotai 原子狀態、ts-morph AST 代碼生成與 Radix UI 企業級 Design System",
+      "subtitleEn": "新加坡商海宇顧問 • Turborepo Monorepo、Jotai 原子狀態、ts-morph AST 代碼生成與 Radix UI 企業級 Design System",
       "tag": "架構與系統設計",
+      "tagEn": "Featured",
       "category": "Frontend Architecture",
+      "categoryEn": "Frontend Architecture",
       "year": "2025/1 — 2026/8",
       "role": "資深前端工程師",
+      "roleEn": "Senior Frontend Engineer",
       "company": "新加坡商海宇顧問 (Seaverse)",
+      "companyEn": "Lincent Studio",
       "badge": "🔥 旗艦代表作",
       "themeColor": "yellow",
       "isNew": true,
       "summary": "以 Turborepo 構建大型 Monorepo 體系，整合 4 個 App 與 9 個核心 Package，打造 80+ 獨立 UI 區塊。引入 Jotai 原子化狀態管理與 ts-morph AST 自動代碼生成，賦予行銷團隊 100% 獨立排版上稿能力。",
-      "coverImage": "/uploads/1787334619283-S__66437123.webp",
-      "contentMd": "## 專案背景與痛點\n\n傳統跨品牌多主題遊戲平台常面臨**程式碼重複率高**、**多主題狀態管理衝突**、以及**行銷營運每次更動版面皆需工程團隊發版**的巨大瓶頸。為了解決多端遊戲平台在高頻切換主題時的效能與開發效率問題，我主導打造了全新的 **Cms Playground 模組化遊戲平台體系**。\n\n---\n\n## 核心技術突破與架構設計\n\n### 1. Turborepo Monorepo 模組化體系\n- 採用 **Turborepo + Yarn Workspaces** 統一管理 4 個前端 App 與 9 個核心 Packages。\n- 拆解出超過 **80+ 獨立 UI 區塊**，跨品牌程式碼重用率達 **85%**。\n\n### 2. Jotai 細粒度原子化狀態與 Optics-TS 光學變換\n- 捨棄龐大的全域單一 Store，改採 **Jotai 原子化狀態**（Atomic State Management），實現精準細粒度渲染，大幅減少不必要的 DOM Re-renders。\n- 結合 **Optics-TS** 光學變換庫，解決複雜深層巢狀物件的不變性狀態更新痛點。\n\n### 3. ts-morph AST 自動代碼生成引擎\n- 結合 **ts-morph** 分析 Abstract Syntax Tree (AST)，自動從後端 CMS 配置與 OpenAPI 規格生成 TypeScript 型別定義與 API 串接程式碼。\n- 減少工程師手動編寫樣板代碼時間超過 **60%**。\n\n### 4. Radix UI + Storybook 企業級 Design System\n- 建構無障礙 (a11y) 優先的企業級 Design System，涵蓋完整的 Design Tokens、色彩語義與響應式斷點。\n\n---\n\n## 實質商業與團隊價值\n\n> 🎯 **零工程介入的即時營運上稿**：行銷與營運團隊透過視覺化 WYSIWYG 畫布，可自由拖曳組合遊戲大廳版面，活動上線時間由原本的 3 天縮減至 **15 分鐘**。",
+      "summaryEn": "以 Turborepo 構建大型 Monorepo 體系，整合 4 個 App 與 9 個核心 Package，打造 80+ 獨立 UI 區塊。引入 Jotai 原子化狀態管理與 ts-morph AST 自動代碼生成，賦予行銷團隊 100% 獨立排版上稿能力。",
+      "coverImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 專案背景與痛點\n\n傳統跨品牌多主題遊戲平台常面臨**程式碼重複率高**、**多主題狀態管理衝突**、以及**行銷營運每次更動版面皆需工程團隊發版**的巨大瓶頸。為了解決多端遊戲平台在高頻切換主題時的效能與開發效率問題，我主導打造了全新的 **Cms Playground 模組化遊戲平台體系**。\n/uploads/1787334619283-S__66437123.webp\n---\n\n## 核心技術突破與架構設計\n\n### 1. Turborepo Monorepo 模組化體系\n- 採用 **Turborepo + Yarn Workspaces** 統一管理 4 個前端 App 與 9 個核心 Packages。\n- 拆解出超過 **80+ 獨立 UI 區塊**，跨品牌程式碼重用率達 **85%**。\n\n### 2. Jotai 細粒度原子化狀態與 Optics-TS 光學變換\n- 捨棄龐大的全域單一 Store，改採 **Jotai 原子化狀態**（Atomic State Management），實現精準細粒度渲染，大幅減少不必要的 DOM Re-renders。\n- 結合 **Optics-TS** 光學變換庫，解決複雜深層巢狀物件的不變性狀態更新痛點。\n\n### 3. ts-morph AST 自動代碼生成引擎\n- 結合 **ts-morph** 分析 Abstract Syntax Tree (AST)，自動從後端 CMS 配置與 OpenAPI 規格生成 TypeScript 型別定義與 API 串接程式碼。\n- 減少工程師手動編寫樣板代碼時間超過 **60%**。\n\n### 4. Radix UI + Storybook 企業級 Design System\n- 建構無障礙 (a11y) 優先的企業級 Design System，涵蓋完整的 Design Tokens、色彩語義與響應式斷點。\n\n---\n\n## 實質商業與團隊價值\n\n> 🎯 **零工程介入的即時營運上稿**：行銷與營運團隊透過視覺化 WYSIWYG 畫布，可自由拖曳組合遊戲大廳版面，活動上線時間由原本的 3 天縮減至 **15 分鐘**。\n![專案插圖](/uploads/1787751498851-____.webp)\n\n![專案插圖](/uploads/1787334619283-S__66437123.webp)\n",
       "painPoints": [
         "跨品牌多主題遊戲平台重複造輪子，缺乏統一組件庫",
         "深層狀態頻繁更新導致大廳渲染卡頓",
         "每次版面更新需工程介入，行銷無法自主排版"
       ],
+      "painPointsEn": [],
       "techStack": [
         "React",
         "Next.js",
@@ -221,6 +229,186 @@
         }
       ],
       "demoUrl": "https://weifeng.com"
+    },
+    {
+      "id": "vortex-audio",
+      "title": "VORTEX Audio Modules 模組化合成器",
+      "titleEn": "VORTEX Audio Modules & Synthesizer",
+      "subtitle": "類比聲音硬體與 Web Audio DSP 即時聲音運算工作站",
+      "subtitleEn": "Analog Sound Hardware & Web Audio DSP Workstation",
+      "tag": "3D Hardware & Audio",
+      "tagEn": "Hardware 3D",
+      "category": "Audio DSP & 3D",
+      "categoryEn": "Audio DSP & 3D",
+      "year": "2025/3 — 2026/1",
+      "role": "技術架構師 / Creative Developer",
+      "roleEn": "Lead Architect & Creative Developer",
+      "company": "Voltix Sound Lab",
+      "companyEn": "Voltix Sound Lab",
+      "badge": "🏆 Red Dot Design 2026",
+      "themeColor": "yellow",
+      "isNew": true,
+      "summary": "結合復古音訊踏板實體觸感與當代微擬物軟體介面的模組化合成器。以 Web Audio API + Three.js 實現低延遲聲音合成與視覺波形同步。",
+      "summaryEn": "Modular analog hardware synthesizer paired with contemporary skeuomorphic DSP workstation using Three.js & Web Audio API.",
+      "coverImage": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 專案核心突破\n\n結合復古踏板 (Pedal Synth) 與當代微擬物軟體介面的模組化合成器設計。運用 Blender 烘焙高精度光影貼圖，結合 Web Audio API 實現即時聲音合成與視覺波形同步回饋。",
+      "painPoints": [
+        "數位介面缺乏實體旋鈕阻尼感",
+        "Web 音訊即時運算延遲控制需在 15ms 以內"
+      ],
+      "techStack": [
+        "Three.js",
+        "Web Audio API",
+        "Blender",
+        "TypeScript",
+        "GLSL Shaders",
+        "Tailwind CSS"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "自研雙核心 Web Audio 震盪器",
+          "Blender 光影法線烘焙",
+          "Red Dot Design Concept 入圍"
+        ],
+        "animationHighlights": [
+          "60FPS 物理阻尼旋鈕與即時示波器動態"
+        ],
+        "usageScenarios": [
+          "專業聲音設計師進行即時聲音塑形與合成"
+        ],
+        "clientPitch": "打破數位軟體冰冷感，創造兼具觸覺質感與極致算力的聲音工具。"
+      },
+      "metrics": [
+        {
+          "label": "募資達成率",
+          "value": "320%"
+        },
+        {
+          "label": "音訊延遲",
+          "value": "< 12ms"
+        }
+      ],
+      "demoUrl": "https://vortex-audio.dev"
+    },
+    {
+      "id": "noodle-avatar",
+      "title": "3D Noodle Avatar 程序化角色合成系統",
+      "titleEn": "3D Noodle Procedural Avatar Engine",
+      "subtitle": "即時 WebGL 網格形變、骨架裝配與跨平台虛擬角色生成引擎",
+      "subtitleEn": "Real-time WebGL mesh deformation & avatar generative engine",
+      "tag": "Creative Coding",
+      "tagEn": "Creative Code",
+      "category": "WebGL & Generative",
+      "categoryEn": "WebGL & Generative",
+      "year": "2024/5 — 2024/11",
+      "role": "Creative Developer / 前端架構師",
+      "roleEn": "Creative Developer / Architect",
+      "company": "MetaCraft Interactive",
+      "companyEn": "MetaCraft Interactive",
+      "badge": "✨ Awwwards 榮譽提名",
+      "themeColor": "mint",
+      "isNew": false,
+      "summary": "基於 WebGL 與 Three.js 的程序化 3D 角色合成器，支援骨架動態綁定、手勢辨識與即時 GLTF/VRM 匯出，廣泛應用於元宇宙與社群遊戲。",
+      "summaryEn": "Procedural 3D avatar generator built with WebGL & Three.js, supporting real-time mesh deformation and GLTF export.",
+      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 專案核心突破\n\n以自定義 GLSL Shaders 實現毛髮與布料的物理擺動，配合 Web Worker 將 3D 骨架運算移出主執行緒，在行動端亦能穩定維持 60FPS。",
+      "painPoints": [
+        "行動裝置上 3D 角色運算耗能過高",
+        "多樣化骨架裝配無法即時預覽"
+      ],
+      "techStack": [
+        "Three.js",
+        "WebGL",
+        "GLSL",
+        "Web Workers",
+        "React",
+        "TypeScript"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "自研 WebGL 骨架網格形變引擎",
+          "支援即時 VRM 格式匯出",
+          "Web Worker 負載隔離"
+        ],
+        "animationHighlights": [
+          "彈性物理擺動與流體動態"
+        ],
+        "usageScenarios": [
+          "社群用戶即時捏臉生成專屬虛擬替身"
+        ],
+        "clientPitch": "極致輕量化 3D 引擎，讓每一位用戶在瀏覽器秒級創造獨一無二的數位形象。"
+      },
+      "metrics": [
+        {
+          "label": "載入體積",
+          "value": "< 1.4MB"
+        },
+        {
+          "label": "FPS 表現",
+          "value": "60 FPS"
+        }
+      ],
+      "demoUrl": "https://noodle-avatar.io"
+    },
+    {
+      "id": "matrix-os",
+      "title": "MatrixOS 企業級微前端與雲原生設計系統",
+      "titleEn": "MatrixOS Cloud-Native Design System",
+      "subtitle": "跨 12 個子系統的統一微前端架構、Design Tokens 引擎與企業級無障礙元件庫",
+      "subtitleEn": "Unified micro-frontend architecture & tokens engine across 12 subsystems",
+      "tag": "Enterprise Design System",
+      "tagEn": "Design System",
+      "category": "Architecture & DS",
+      "categoryEn": "Architecture & DS",
+      "year": "2023/8 — 2024/4",
+      "role": "資深前端架構師",
+      "roleEn": "Senior Frontend Architect",
+      "company": "CloudScale Global",
+      "companyEn": "CloudScale Global",
+      "badge": "🚀 12+ 子系統整合",
+      "themeColor": "blue",
+      "isNew": false,
+      "summary": "為跨國企業建構高內聚、低耦合的微前端 (Module Federation) 設計系統，統一色彩語義、無障礙規範 (WCAG 2.1 AA) 與自動化版本發布。",
+      "summaryEn": "Enterprise-scale micro-frontend architecture with unified design tokens, WCAG 2.1 compliance, and automated release pipeline.",
+      "coverImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "contentMd": "## 專案核心突破\n\n以 Webpack 5 Module Federation + Turborepo 統一管理 12 個獨立部署子應用，打破跨團隊重複開發壁壘，整體開發體驗提升 300%。",
+      "painPoints": [
+        "跨國跨部門團隊組件樣式不一致",
+        "版本發布牽一髮而動全身"
+      ],
+      "techStack": [
+        "Webpack 5 Module Federation",
+        "React",
+        "Storybook",
+        "Tailwind CSS",
+        "Figma Tokens",
+        "GitHub Actions"
+      ],
+      "aiHighlights": {
+        "coreHighlights": [
+          "Module Federation 動態載入架構",
+          "Figma Tokens 與代碼雙向同步",
+          "100% WCAG 2.1 AA 合規"
+        ],
+        "animationHighlights": [
+          "無感平滑微前端路由切換與狀態維持"
+        ],
+        "usageScenarios": [
+          "多部門工程師直接調用標準化企業級組件庫"
+        ],
+        "clientPitch": "企業級研發效能與品牌視覺一致性的最堅實基石。"
+      },
+      "metrics": [
+        {
+          "label": "重用率",
+          "value": "92%"
+        },
+        {
+          "label": "交付週期",
+          "value": "-65%"
+        }
+      ],
+      "demoUrl": "https://matrix-os.cloud"
     }
   ],
   "inquiries": [

@@ -3,6 +3,27 @@ import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
 
+export async function GET() {
+  try {
+    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+    if (!fs.existsSync(uploadsDir)) {
+      return NextResponse.json({ success: true, urls: [] });
+    }
+    const files = fs.readdirSync(uploadsDir)
+      .filter((f) => /\.(webp|jpg|jpeg|png|gif|avif|svg)$/i.test(f))
+      .map((f) => ({
+        name: f,
+        mtime: fs.statSync(path.join(uploadsDir, f)).mtimeMs,
+        url: `/uploads/${f}`,
+      }))
+      .sort((a, b) => b.mtime - a.mtime)
+      .map((f) => f.url);
+    return NextResponse.json({ success: true, urls: files });
+  } catch (error: any) {
+    return NextResponse.json({ success: false, urls: [], error: error.message }, { status: 500 });
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();

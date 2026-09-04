@@ -1,79 +1,55 @@
-'use client';
+import type { Metadata } from 'next';
+import { FrontendShell } from '../components/layouts/frontend-shell';
+import { HeroSection } from '../features/portfolio/components/hero-section';
+import { BenefitsSection } from '../features/portfolio/components/benefits-section';
+import { FeaturedProjects } from '../features/projects/components/featured-projects';
+import { WhyChooseMeSection } from '../features/portfolio/components/why-choose-me';
+import { ServicesSection } from '../features/portfolio/components/services-section';
+import { ProcessSection } from '../features/portfolio/components/process-section';
+import { TestimonialsSection } from '../features/portfolio/components/testimonials-section';
+import { ResumeSection } from '../features/portfolio/components/resume-section';
+import { InquirySection } from '../features/inquiries/components/inquiry-section';
+import { Footer } from '../components/layouts/footer';
 
-import React, { useEffect } from 'react';
-import { useAtom } from 'jotai';
-import { projectsAtom, inquiriesAtom, selectedProjectAtom } from '../store/atoms';
-import { Header } from '../components/Header';
-import { HeroSection } from '../components/HeroSection';
-import { CuteCardCarousel } from '../components/CuteCardCarousel';
-import { AIDeepDiveShowcase } from '../components/AIDeepDiveShowcase';
-import { ResumeSection } from '../components/ResumeSection';
-import { InquirySection } from '../components/InquirySection';
-import { Footer } from '../components/Footer';
+export const metadata: Metadata = {
+  title: 'Lincent Huang | Senior Frontend Architect & Product Engineer',
+  description: 'A premium portfolio showcasing modern frontend architecture, enterprise design systems, and high-performance web applications.',
+};
 
 export default function HomePage() {
-  const [projects, setProjects] = useAtom(projectsAtom);
-  const [, setInquiries] = useAtom(inquiriesAtom);
-  const [selectedProject, setSelectedProject] = useAtom(selectedProjectAtom);
-
-  // Initial load from persistent storage API
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const [projRes, inqRes] = await Promise.all([
-          fetch('/api/projects'),
-          fetch('/api/inquiries'),
-        ]);
-
-        const projData = await projRes.json();
-        const inqData = await inqRes.json();
-
-        if (projData.success && projData.projects) {
-          setProjects(projData.projects);
-          if (!selectedProject && projData.projects.length > 0) {
-            setSelectedProject(projData.projects[0]);
-          }
-        }
-
-        if (inqData.success && inqData.inquiries) {
-          setInquiries(inqData.inquiries);
-        }
-      } catch (err) {
-        console.error('Failed to load initial storage data', err);
-      }
-    }
-    loadData();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[#08090C] text-white transition-colors duration-300 relative">
-      {/* Framer Grid and Dot Ambient Canvas */}
-      <div className="fixed inset-0 bg-framer-dots pointer-events-none z-0 opacity-40" />
-      <div className="fixed inset-0 bg-framer-grid pointer-events-none z-0 opacity-30" />
-
-      {/* Main Content */}
-      <div className="relative z-10">
-        {/* Navigation Header */}
-        <Header />
-
-        {/* Hero Section */}
+    <FrontendShell>
+      <div className="w-full pt-4 sm:pt-6">
+        {/* 1. Hero Section */}
         <HeroSection />
 
-        {/* Cute Card Carousel (新作品可愛卡片輪播) */}
-        <CuteCardCarousel />
+        {/* 2. Benefits Bento */}
+        <BenefitsSection />
 
-        {/* AI Deep Dive Showcase (AI 作品深度剖析 & 客戶展示體驗) */}
-        <AIDeepDiveShowcase />
+        {/* 3. Selected Work Grid */}
+        <FeaturedProjects />
 
-        {/* Resume & Milestones Section (黃令成 完整履歷與專案成就系統) */}
+        {/* 4. Core Values & Why Choose Me */}
+        <WhyChooseMeSection />
+
+        {/* 5. Creative Services */}
+        <ServicesSection />
+
+        {/* 6. 6-Step Process Flow */}
+        <ProcessSection />
+
+        {/* 7. Client Testimonials */}
+        <TestimonialsSection />
+
+        {/* 8. Career Journey & Expertise */}
         <ResumeSection />
 
-        {/* Client Inquiry Section (合作與面試邀請表單) */}
+        {/* 9. Contact & Inquiry Section */}
         <InquirySection />
 
-        {/* Footer */}
+        {/* 10. Clean Minimal Footer */}
         <Footer />
       </div>
-    </div>
+    </FrontendShell>
   );
 }
