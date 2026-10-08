@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { useI18n } from '../../../i18n';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
+import { MediaImage } from '../../../components/media/media-image';
 import { ArrowUpRight } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const site = useSite();
+  const h = site.hero;
 
   return (
     <section className="pb-8 px-4 sm:px-8 max-w-7xl mx-auto">
@@ -19,16 +24,16 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-7 max-w-2xl">
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-sans font-bold tracking-tight text-[#121218] leading-[1.06]">
-              {t.hero.headlinePrefix} <br />
-              {t.hero.headlineMain}
+              {tx(h.headlinePrefix, lang)} <br />
+              {tx(h.headlineMain, lang)}
               <span className="font-serif italic font-normal text-slate-400">
-                {t.hero.headlineHighlight}
+                {tx(h.headlineHighlight, lang)}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-lg">
-              {t.hero.subtitle}
+              {tx(h.subtitle, lang)}
             </p>
 
             {/* Action Buttons */}
@@ -60,9 +65,10 @@ export const HeroSection: React.FC = () => {
 
         {/* Right Side Portrait Cutout (Desktop) */}
         <div className="hidden lg:block absolute right-0 bottom-0 top-0 w-[46%] pointer-events-none z-10">
-          <img
-            src="/images/hero-portrait.png"
-            alt="Lincent Portrait"
+          <MediaImage
+            src={site.profile.heroImage}
+            alt={tx(site.profile.name, lang)}
+            priority
             className="w-full h-full object-contain object-bottom select-none"
           />
         </div>
@@ -70,9 +76,10 @@ export const HeroSection: React.FC = () => {
         {/* Mobile / Tablet Portrait Cutout */}
         <div className="lg:hidden flex justify-center -mb-8 pt-2 relative z-10 pointer-events-none">
           <div className="relative [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
-            <img
-              src="/images/hero-portrait.png"
-              alt="Lincent Portrait"
+            <MediaImage
+              src={site.profile.heroImage}
+              alt={tx(site.profile.name, lang)}
+              priority
               className="h-60 sm:h-72 object-contain select-none"
             />
           </div>
@@ -82,13 +89,13 @@ export const HeroSection: React.FC = () => {
         <div className="hidden sm:flex absolute bottom-8 right-8 z-30 p-5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/20 text-white max-w-[340px] shadow-2xl items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="text-[11px] text-slate-300 font-mono block">
-              {t.hero.bookingTag}
+              {tx(h.booking.tag, lang)}
             </span>
             <h4 className="text-sm font-bold text-white leading-tight">
-              {t.hero.bookingTitle}
+              {tx(h.booking.title, lang)}
             </h4>
             <p className="text-[11px] text-slate-300 leading-tight">
-              {t.hero.bookingDesc}
+              {tx(h.booking.desc, lang)}
             </p>
           </div>
           <a
@@ -102,32 +109,16 @@ export const HeroSection: React.FC = () => {
 
         {/* Bottom Left Stats Row */}
         <div className="pt-12 sm:pt-16 mt-8 relative z-20 flex flex-wrap gap-8 sm:gap-14 border-t border-slate-300/60 max-w-xl">
-          <div className="space-y-0.5">
-            <span className="font-sans font-bold text-2xl sm:text-3xl text-[#121218] block">
-              {t.hero.stats.completedNum}
-            </span>
-            <span className="text-xs text-slate-500 font-medium">
-              {t.hero.stats.completedLabel}
-            </span>
-          </div>
-
-          <div className="space-y-0.5">
-            <span className="font-sans font-bold text-2xl sm:text-3xl text-[#121218] block">
-              {t.hero.stats.expNum}
-            </span>
-            <span className="text-xs text-slate-500 font-medium">
-              {t.hero.stats.expLabel}
-            </span>
-          </div>
-
-          <div className="space-y-0.5">
-            <span className="font-sans font-bold text-2xl sm:text-3xl text-[#121218] block">
-              {t.hero.stats.clientsNum}
-            </span>
-            <span className="text-xs text-slate-500 font-medium">
-              {t.hero.stats.clientsLabel}
-            </span>
-          </div>
+          {h.stats.map((stat, idx) => (
+            <div key={idx} className="space-y-0.5">
+              <span className="font-sans font-bold text-2xl sm:text-3xl text-[#121218] block">
+                {stat.value}
+              </span>
+              <span className="text-xs text-slate-500 font-medium">
+                {tx(stat.label, lang)}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

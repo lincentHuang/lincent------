@@ -29,3 +29,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# CMS 執行期資料（內容 JSON 與上傳圖片）
+/data

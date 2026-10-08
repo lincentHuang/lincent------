@@ -1,45 +1,66 @@
-# 📄 產品需求規格書 (PRD.md) — Sevora 風格作品集與多語系 AI CMS 系統
+# 📄 產品需求規格書 (PRD.md) — 專案多圖相簿管理 ✕ 前台頂部自適應格狀畫廊展間 (Project Album & Hero Gallery Grid)
 
-> **版本**：v2.0.0  
+> **版本**：v2.5.0  
 > **負責人**：`@PM` (專案經理)  
-> **目標**：全面重塑前台為 Sevora (sevora.framer.website) 頂級暗黑極簡 Bento 風格，建構中英雙語 (i18n) 系統與 AI 自動翻譯補齊模組，並提供高自由度的 Sevora 風格管理後台 (CMS)。
+> **狀態**：Approved & In Execution  
+> **目標**：為作品集所有專案全面支援「專案相簿 (Project Album)」功能。於後台管理端提供獨立專屬的相簿管理模組，支援多圖批次上傳、縮圖網格預覽、一鍵設為封面與即時刪除/排序；於前台專案詳情頁最頂端，打造精緻且極具視覺張力的「自適應多圖格狀畫廊展間 (Responsive Gallery Grid)」，一進畫面即可直覺瀏覽所有專案視覺作品，並支援全螢幕 Lightbox 沉浸燈箱切換。
 
 ---
 
 ## 🎯 1. 核心需求與使用者故事 (User Stories)
 
-1. **Sevora 視覺與佈局體驗 (Sevora Design & Flow)**：
-   - 作為訪客，我進入網站時能感受到如 Sevora 般極致克制、乾淨大氣的暗黑設計、高質感微標籤、流暢滾動與卡片動態。
-   - 包含：Header 浮動導航（含語系切換）、權威 Hero、Sevora 模組化 Bento 積木區（技能/工具/服務/數據）、精選專案作品輪播、架構深度剖析、經歷時程、聯絡表單、精緻 Footer。
-
-2. **全站中英雙語 (i18n) ✕ AI 智慧翻譯補齊 (AI Auto-Translate)**：
-   - 預設語系為繁體中文 (`zh-TW`)，可一鍵切換英文 (`en`)。
-   - 全站靜態文案（導航、按鈕、欄位）與動態資料（Hero、專案、自訂卡片）皆具備雙語。
-   - 在管理後台，當使用者只填寫中文時，點擊 **「✨ AI 補齊英文翻譯」**，AI 自動生成地道流暢的英文文案；反之亦然。
-
-3. **Sevora 風格超級管理後台 (Comprehensive Admin CMS)**：
-   - 介面升級為 Sevora 極黑精緻風格，密碼防護鎖 (`qwe123qwe`)。
-   - **分頁 1：全站文案與 Hero 管理 (Site Copy CMS)**：可編輯標題、副標題、自我介紹、狀態標籤（中英雙欄 + AI 翻譯）。
-   - **分頁 2：模組化 Bento 卡片管理 (Modular Cards CMS)**：自由新增/編輯/刪除技能卡、工具模組、服務項目、數據指標卡。
-   - **分頁 3：專案作品管理 (Projects CMS)**：上傳封面圖 (自動轉 WebP)、編輯中英雙語標題/摘要/Markdown 內文、AI 自動提煉亮點。
-   - **分頁 4：合作邀請收件匣 (Inquiries Inbox)**：即時閱讀、標記已讀/回覆/封存。
+1. **前台專案頂部自適應格狀展間 (Hero Responsive Gallery Grid)**：
+   - 作為前台訪客，進入任何專案詳情頁 (`/projects/[id]`) 時，在畫面一開始立即看到現代雜誌感 / 旗艦畫廊級的自適應多圖格狀展間：
+     - **1 張相片**：全幅沉浸單張大圖，帶有極致圓角、微深色背景與 Hover 微縮放。
+     - **2 張相片**：大氣雙欄對稱格（2-Column Split Grid）。
+     - **3 張相片**：經典 2/3 主焦點大圖 + 1/3 雙圖垂直堆疊排版。
+     - **4 張相片**：左側大圖主秀 + 右側多圖對稱網格。
+     - **5 張以上**：主展位 + 網格矩陣，第 4 格自帶「+N 張相片」半透明覆蓋層，點擊展開全相簿燈箱。
+2. **全螢幕 Lightbox 沉浸畫廊瀏覽器 (Fullscreen Gallery Lightbox)**：
+   - 點擊展間任一照片立即開啟深色磨砂全螢幕 Lightbox。
+   - 提供「上一張 (Previous) / 下一張 (Next)」導航鍵、鍵盤快速鍵 (`←`、`→`、`ESC`)、底部縮圖快速選取列與相片序號指引（如 `3 / 8`）。
+3. **後台專案相簿獨立管理模組 (Admin Project Album Manager)**：
+   - 作為管理員，在 `/admin` 專案編輯器中享有專屬「專案相簿 (Project Gallery)」專區：
+     - 點擊「+ 批次上傳相簿相片」，支援一次選擇多張檔案批次上傳並自動加入相簿。
+     - 縮圖預覽卡片網格展示當前相簿所有相片，提供序號、一鍵設為封面 (Set as Cover)、當前封面徽章、從相簿移除等操作。
+     - 亦支援從已上傳媒體庫選取加入，或手動貼上圖片網址新增。
+4. **資料庫與本地儲存雙向持久化 (Data Persistence & Schema Consistency)**：
+   - 專案 `images: string[]` 完整儲存於 `storage.json` 與資料庫模型，確保重整與發佈後資料 100% 完整無遺失。
 
 ---
 
 ## 📋 2. 驗收標準 (Acceptance Criteria - AC)
 
-* **AC-1 (語系切換)**：
-  - 點擊 Header 或 Footer 的語系切換按鈕，全站即時響應切換為 `zh` 或 `en`，所有標題、按鈕、卡片內容與專案詳情頁皆同步翻譯。
-* **AC-2 (AI 翻譯輔助)**：
-  - 後台提供 AI 翻譯 API (`/api/ai-translate`)，支援單欄與多欄批量翻譯（中翻英、英翻中），響應時間 < 2s。
-* **AC-3 (Bento 模組卡片)**：
-  - 後台新增/修改/刪除的模組卡片，即時持久化至 Supabase PostgreSQL 資料庫 (`modular_cards` 表)，前台 Bento 區塊自適應排版。
-* **AC-4 (五態完備)**：
-  - 所有動態組件均強制實作 5 種狀態：Loading（骨架屏/載入旋轉）、Empty（空資料提示）、Error（容錯與重試）、Success（渲染完成）、Active（選取/懸停狀態）。
-* **AC-5 (效能與相容)**：
-  - 圖片自動壓縮為 WebP，Next.js App Router 100% 通過 TypeScript 與 Build 檢查。
+* **AC-1 (前台頂部自適應畫廊展間)**：
+  - 專案頁畫面一開始清晰呈現格狀展間，根據相片數量（1、2、3、4、5+ 張）自動適配最佳美學比例排版，支援 RWD 手機與桌機響應。
+* **AC-2 (全螢幕 Lightbox 多圖輪轉)**：
+  - 點擊展間任一照片開啟全螢幕高解析燈箱，支援上一張/下一張切換、鍵盤方向鍵、ESC 退出與縮圖索引列。
+* **AC-3 (後台相簿批次多圖上傳)**：
+  - 專案編輯器具備獨立相簿區塊，點擊上傳按鈕可選取多個檔案 (`multiple`)，自動壓縮並納入專案 `images` 陣列。
+* **AC-4 (一鍵設為封面與移除管理)**：
+  - 後台相簿卡片即時標示「★ 封面圖」，點擊任一照片的「設為封面」即時同步 `coverImage`，點擊移除即自相簿剔除。
+* **AC-5 (資料持久化一致性)**：
+  - 儲存專案後，前台即時更新相簿內容，`storage.json` 與內存快取資料保持 100% 一致。
+* **AC-6 (無相片之優雅降級 (Empty State))**：
+  - 若專案尚未上傳額外相片，自動以專案封面圖或預設視覺展示，不破版、不報錯。
+* **AC-7 (Next.js 編譯與全域零錯誤)**：
+  - `npm run build` 與 TypeScript 檢查 100% 通過，API 與前台端點全部維持 HTTP 200 OK。
 
 ---
 
 ## 🔄 3. 團隊交接指示 (Team Handoff)
-- **`@Architect`**：請立即建立 `src/types/index.ts` 與升級 `prisma/schema.prisma`（支援多語系、全站設定與自訂模組卡片表）。
+
+- **`@Architect`**：確認 `ProjectItem.images` 與資料庫模型之序列化契約。
+- **`@Backend`**：確認 `src/lib/db.ts` 於 `saveProject` 與 `getAllProjects` 中完整映射與儲存 `images` 陣列。
+- **`@Frontend`**：在 `admin-dashboard.tsx` 實作獨立專案相簿模組（批次上傳、設為封面、移除）；在 `project-showcase.tsx` 實作畫面頂部自適應多圖格狀展間與全螢幕 Lightbox 輪轉器。
+- **`@QA`**：驗收 1~6 張不同圖片數量之 RWD 格狀排版、Lightbox 鍵盤手勢、後台多圖上傳與資料持久性，產出 `QA_REPORT.md`。
+
+
+## 決策紀錄
+
+- **2026-10-08：內容改為單一 CMS 內容模型（`src/content/types.ts`）**。原因：首頁文案寫死在 i18n 與 resumeData，後台編輯的 SiteConfig / ModularCard 前台根本沒讀，造成前後台對不上。現在前台所有區塊與後台編輯同一份 `SiteContent`，所有文字為中英雙語 `{zh, en}` 物件。
+- **2026-10-08：移除 Prisma / PostgreSQL 執行期依賴，改用「內容 JSON + 物件儲存」**（`src/server/storage.ts`）。原因：資料庫 schema 缺 images / galleryRows 欄位、背景同步會覆蓋本機寫入、連線常逾時。設定 R2 環境變數即自動改存 Cloudflare R2，否則存本機 `data/`。
+- **2026-10-08：圖片統一為「封面 + 相簿排版列」兩種用途，全部經媒體庫管理**。原因：原本 coverImage / images[] / galleryRows / Markdown 四套並存，前台混合顯示難以預期。舊 images[] 自動遷移成全寬排版列。上傳自動轉正、壓縮 WebP（長邊 2400px）、產生 800px 縮圖與模糊預覽；使用中的圖片禁止誤刪。
+- **2026-10-08：後台改為伺服器端驗證**（`ADMIN_PASSWORD` + HMAC httpOnly cookie + middleware 保護 `/api/admin/*`）。原因：原密碼寫死在前端程式碼，且所有寫入 API 無驗證。
+- **2026-10-08：移除未掛載的 BentoGrid / DeepDiveShowcase 與「積木卡片」功能**，由「核心優勢卡片」取代。推薦評價區預設隱藏，待填入真實推薦再開啟。
+- **2026-10-08：新增「關於我」頁面 `/about`**，內容依履歷 PDF 整理，完全由後台編輯。

@@ -3,10 +3,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { useI18n } from '../../i18n';
+import { useSite } from '../../content/content-provider';
+import { tx } from '../../content/types';
 import { ArrowUp, Code2, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const { profile } = useSite();
+  const name = tx(profile.name, lang) || 'Lincent Huang';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -17,36 +21,37 @@ export const Footer: React.FC = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8">
         <div className="space-y-1 text-center md:text-left">
           <span className="font-sans font-bold text-xl tracking-tight text-slate-900 block">
-            Lincent Huang
+            {name}
           </span>
           <p className="text-xs text-slate-500 font-mono">
-            {t.footer.role}
+            {[tx(profile.title, lang), tx(profile.location, lang)].filter(Boolean).join(' • ')}
           </p>
         </div>
 
         {/* Links */}
         <div className="flex items-center gap-6 text-xs font-medium text-slate-600">
-          <a href="#benefits" className="hover:text-black transition-colors">
+          <a href="/#benefits" className="hover:text-black transition-colors">
             {t.nav.benefits}
           </a>
           <Link href="/projects" className="hover:text-black transition-colors">
             {t.nav.projects}
           </Link>
-          <a href="#services" className="hover:text-black transition-colors">
+          <a href="/#services" className="hover:text-black transition-colors">
             {t.nav.services}
           </a>
-          <a href="#process" className="hover:text-black transition-colors">
+          <a href="/#process" className="hover:text-black transition-colors">
             {t.nav.process}
           </a>
-          <a href="#experience" className="hover:text-black transition-colors">
+          <a href="/#experience" className="hover:text-black transition-colors">
             {t.nav.experience}
           </a>
         </div>
 
         {/* Social / Top */}
         <div className="flex items-center gap-3">
+          {profile.githubUrl && (
           <a
-            href="https://github.com/lincentt"
+            href={profile.githubUrl}
             target="_blank"
             rel="noreferrer"
             className="p-2.5 rounded-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 transition-all shadow-xs"
@@ -54,17 +59,20 @@ export const Footer: React.FC = () => {
           >
             <Code2 className="w-4 h-4" />
           </a>
+          )}
+          {profile.email && (
           <a
-            href="mailto:lincent.work@gmail.com"
+            href={`mailto:${profile.email}`}
             className="p-2.5 rounded-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 transition-all shadow-xs"
             title="Email"
           >
             <Mail className="w-4 h-4" />
           </a>
+          )}
           <button
             onClick={scrollToTop}
             className="p-2.5 rounded-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 transition-all shadow-xs"
-            title="回到頂部"
+            title={t.footer.backToTop}
           >
             <ArrowUp className="w-4 h-4" />
           </button>
@@ -72,8 +80,8 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 font-mono">
-        <span>© {new Date().getFullYear()} Lincent Huang. Crafted with clarity.</span>
-        <span>Built with Next.js 14, Tailwind CSS & Supabase</span>
+        <span>© {new Date().getFullYear()} {t.footer.copyright}</span>
+        <span>{t.footer.builtWith}</span>
       </div>
     </footer>
   );

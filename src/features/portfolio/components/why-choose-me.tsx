@@ -2,10 +2,14 @@
 
 import React from 'react';
 import { useI18n } from '../../../i18n';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
 import { Users, CheckCircle, Clock, Star } from 'lucide-react';
 
 export const WhyChooseMeSection: React.FC = () => {
-  const { t } = useI18n();
+  const { lang } = useI18n();
+  const site = useSite();
+  const c = site.whyChooseMe;
   const icons = [Users, CheckCircle, Clock, Star];
   const colorStyles = [
     { bg: 'bg-lime-50 text-lime-800' },
@@ -15,23 +19,23 @@ export const WhyChooseMeSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
+    <section id="why-choose-me" className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {t.whyChooseMe.tag}
+          {tx(c.tag, lang)}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {t.whyChooseMe.title}
+          {tx(c.title, lang)}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {t.whyChooseMe.subtitle}
+          {tx(c.subtitle, lang)}
         </p>
       </div>
 
       {/* 4 Bento Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {t.whyChooseMe.stats.map((stat, idx) => {
+        {c.stats.map((stat, idx) => {
           const Icon = icons[idx] || Users;
           const color = colorStyles[idx] || colorStyles[0];
           return (
@@ -44,10 +48,10 @@ export const WhyChooseMeSection: React.FC = () => {
                   {stat.value}
                 </span>
                 <h4 className="text-sm font-bold text-slate-900">
-                  {stat.title}
+                  {tx(stat.title, lang)}
                 </h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  {stat.desc}
+                  {tx(stat.desc, lang)}
                 </p>
               </div>
             </div>

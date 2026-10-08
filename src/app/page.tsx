@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { getPublicContent } from '../server/content-repo';
+import { tx } from '../content/types';
 import { FrontendShell } from '../components/layouts/frontend-shell';
 import { HeroSection } from '../features/portfolio/components/hero-section';
 import { BenefitsSection } from '../features/portfolio/components/benefits-section';
@@ -11,43 +13,41 @@ import { ResumeSection } from '../features/portfolio/components/resume-section';
 import { InquirySection } from '../features/inquiries/components/inquiry-section';
 import { Footer } from '../components/layouts/footer';
 
-export const metadata: Metadata = {
-  title: 'Lincent Huang | Senior Frontend Architect & Product Engineer',
-  description: 'A premium portfolio showcasing modern frontend architecture, enterprise design systems, and high-performance web applications.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { site } = await getPublicContent();
+  return {
+    title: tx(site.seo.title, 'zh') || 'Lincent Huang',
+    description: tx(site.seo.description, 'zh'),
+    openGraph: site.seo.ogImage ? { images: [site.seo.ogImage] } : undefined,
+  };
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { site } = await getPublicContent();
+  const s = site.sections;
+
   return (
     <FrontendShell>
       <div className="w-full pt-4 sm:pt-6">
-        {/* 1. Hero Section */}
+        {/* Hero 永遠顯示 */}
         <HeroSection />
 
-        {/* 2. Benefits Bento */}
-        <BenefitsSection />
+        {s.benefits && <BenefitsSection />}
 
-        {/* 3. Selected Work Grid */}
-        <FeaturedProjects />
+        {s.projects && <FeaturedProjects />}
 
-        {/* 4. Core Values & Why Choose Me */}
-        <WhyChooseMeSection />
+        {s.whyChooseMe && <WhyChooseMeSection />}
 
-        {/* 5. Creative Services */}
-        <ServicesSection />
+        {s.services && <ServicesSection />}
 
-        {/* 6. 6-Step Process Flow */}
-        <ProcessSection />
+        {s.process && <ProcessSection />}
 
-        {/* 7. Client Testimonials */}
-        <TestimonialsSection />
+        {s.testimonials && <TestimonialsSection />}
 
-        {/* 8. Career Journey & Expertise */}
-        <ResumeSection />
+        {s.experience && <ResumeSection />}
 
-        {/* 9. Contact & Inquiry Section */}
-        <InquirySection />
+        {s.contact && <InquirySection />}
 
-        {/* 10. Clean Minimal Footer */}
         <Footer />
       </div>
     </FrontendShell>

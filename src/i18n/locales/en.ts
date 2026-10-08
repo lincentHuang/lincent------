@@ -25,152 +25,8 @@ export const en = {
     letsTalk: "Let's talk",
   },
   hero: {
-    badge: 'OPEN FOR NEW OPPORTUNITIES • AVAILABLE IMMEDIATELY',
-    headlinePrefix: 'Craft better',
-    headlineMain: 'brands, ',
-    headlineHighlight: 'faster',
-    subtitle: 'I design refined brands, websites, and interfaces for ambitious founders and creative teams.',
     viewProjects: 'View projects',
     getInTouch: 'Get in touch',
-    bookingTag: 'Select project',
-    bookingTitle: 'Available for projects',
-    bookingDesc: 'Share a few details, and I will get back with a clear direction.',
-    stats: {
-      completedNum: '30+',
-      completedLabel: 'Projects completed',
-      expNum: '8yr',
-      expLabel: 'Experience',
-      clientsNum: '40+',
-      clientsLabel: 'Happy clients',
-    },
-  },
-  benefits: {
-    tag: 'Benefits',
-    title: 'Discover why we stand out',
-    subtitle: 'Designing clean, responsive websites that communicate clearly, guide visitors smoothly, and support meaningful business goals.',
-    card1: {
-      title: 'Clear design systems',
-      desc: 'Elevate your brand with specialized design systems, consistent tokenized palettes, and reusable headless component architectures.',
-      label: '// Reusable Component Tokens',
-    },
-    card2: {
-      title: 'Websites built to perform',
-      desc: 'Dominate search rankings with precision-tailored architecture designed for sub-second loading and top Core Web Vitals.',
-      scoreLabel: 'Lighthouse Score',
-    },
-    card3: {
-      tag: 'Modern Architecture',
-      title: 'Production-ready execution with Next.js 14 & Turborepo',
-      desc: 'Expand and flourish with modern React 18, Jotai atomic state management, TypeScript, and automated AST code generation.',
-    },
-  },
-  whyChooseMe: {
-    tag: 'Why choose me',
-    title: 'Design built around lasting clarity',
-    subtitle: 'I bring strategy, technical architecture, and refined execution together to create meaningful digital experiences with lasting impact.',
-    stats: [
-      {
-        value: '+100K',
-        title: 'Engaged Users',
-        desc: 'Clear technical direction shaped around every business goal.',
-      },
-      {
-        value: '100%',
-        title: 'Code & A11y Quality',
-        desc: 'Architectures delivered with robust test coverage and single truth.',
-      },
-      {
-        value: '5+ Yrs',
-        title: 'Full Lifecycle Exp',
-        desc: 'Experienced in startup 0-1 and scale-up optimizations.',
-      },
-      {
-        value: '4.9 ★',
-        title: 'Team Trust & Delivery',
-        desc: 'Seamless collaboration with designers and backend teams.',
-      },
-    ],
-  },
-  services: {
-    tag: 'Services',
-    title: 'Creative services for digital brands',
-    subtitle: 'Focused design and development support to help brands build clearer identities, better websites, and refined product experiences.',
-    items: [
-      {
-        title: 'Frontend Architecture & Dev',
-        desc: 'Building responsive, polished web applications with clean structure, TypeScript type-safety, and production-ready execution.',
-        tags: ['Next.js 14', 'React 18', 'TypeScript', 'Monorepo'],
-      },
-      {
-        title: 'Enterprise Design Systems',
-        desc: 'Creating clear visual token systems and headless a11y component libraries that keep your product consistent across every touchpoint.',
-        tags: ['Radix UI', 'Tailwind CSS', 'Storybook', 'Figma Tokens'],
-      },
-      {
-        title: 'Performance & DX Engineering',
-        desc: 'Designing intuitive user flows, sub-second LCP optimization, fine-grained state management, and automated AST tooling.',
-        tags: ['Core Web Vitals', 'Jotai State', 'ts-morph AST', 'SEO'],
-      },
-    ],
-  },
-  process: {
-    tag: 'Process',
-    title: 'How the process flows with clarity',
-    subtitle: 'A clear and collaborative workflow that moves each project from first idea to polished final result.',
-    steps: [
-      {
-        num: '01',
-        title: 'Discovery',
-        desc: 'Understanding business goals, user personas, performance targets, and architectural constraints.',
-      },
-      {
-        num: '02',
-        title: 'Strategy',
-        desc: 'Defining technical stack, monorepo structure, state management, and rendering strategy.',
-      },
-      {
-        num: '03',
-        title: 'Direction',
-        desc: 'Shaping visual tokens, typography rules, and headless a11y component foundations.',
-      },
-      {
-        num: '04',
-        title: 'Architecture & Build',
-        desc: 'Executing type-safe components, fluid responsive layouts, and polished micro-interactions.',
-      },
-      {
-        num: '05',
-        title: 'Performance',
-        desc: 'Tuning Core Web Vitals, automated WebP image pipelines, and sub-second page loads.',
-      },
-      {
-        num: '06',
-        title: 'Delivery',
-        desc: 'Automated CI/CD deployment, boundary test validation, and launch-ready documentation.',
-      },
-    ],
-  },
-  testimonials: {
-    tag: 'Testimonials',
-    title: 'What teams say',
-    subtitle: 'Thoughtful feedback from founders and teams who trusted the process, direction, and final result.',
-    list: [
-      {
-        quote: 'Working with Lincent was incredibly smooth. His mastery in modern architecture and Design Systems helped our team overcome complex state bottlenecks effortlessly.',
-        author: 'Ethan Brooks',
-        role: 'Product Lead',
-      },
-      {
-        quote: 'The process was thoughtful, fast, and highly organized. Every engineering decision felt intentional, resulting in an exceptionally polished web application.',
-        author: 'Maya Chen',
-        role: 'Design Director',
-      },
-      {
-        quote: 'He combines engineering rigor with aesthetic craft. A rare senior engineer who delivers both scalable code architecture and delightful UX.',
-        author: 'Marcus Vance',
-        role: 'Founder & CEO',
-      },
-    ],
   },
   projects: {
     tag: 'Selected work',
@@ -214,16 +70,12 @@ export const en = {
     sendAnother: 'Send another note',
   },
   experience: {
-    tag: 'Experience',
-    title: 'Career journey & expertise',
-    subtitle: '5+ years of full lifecycle frontend engineering, architecture design, and performance tuning.',
     workHistory: 'Work History',
     coreStack: 'Core Capabilities',
     educationTitle: 'Computer Science & Design Craft',
     educationDesc: 'Balancing engineering rigor with aesthetic excellence',
   },
   footer: {
-    role: 'Senior Frontend Architect • Taipei, Taiwan',
     builtWith: 'Built with Next.js 14, Tailwind CSS & Supabase',
     copyright: 'Lincent Huang. Crafted with clarity.',
     backToTop: 'Back to top',

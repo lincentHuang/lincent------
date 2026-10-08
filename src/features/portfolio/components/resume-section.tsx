@@ -3,23 +3,26 @@
 import React from 'react';
 import { useI18n } from '../../../i18n';
 import { CheckCircle2, GraduationCap } from 'lucide-react';
-import { resumeData } from '../../../data/resumeData';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
 
 export const ResumeSection: React.FC = () => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const site = useSite();
+  const c = site.experience;
 
   return (
     <section id="experience" className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {t.experience.tag}
+          {tx(c.tag, lang)}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {t.experience.title}
+          {tx(c.title, lang)}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {t.experience.subtitle}
+          {tx(c.subtitle, lang)}
         </p>
       </div>
 
@@ -32,39 +35,44 @@ export const ResumeSection: React.FC = () => {
           </h3>
 
           <div className="space-y-4">
-            {resumeData.experiences.map((exp, idx) => (
+            {c.items.map((exp, idx) => (
               <div
-                key={idx}
+                key={exp.id || idx}
                 className="p-6 sm:p-7 portfolio-card space-y-3"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
                     <h4 className="text-base sm:text-lg font-bold text-slate-900">
-                      {exp.role}
+                      {tx(exp.role, lang)}
+                      {exp.badge && tx(exp.badge, lang) && (
+                        <span className="ml-2 align-middle px-2 py-0.5 rounded-full bg-lime-50 text-lime-800 border border-lime-200 text-[10px] font-semibold">
+                          {tx(exp.badge, lang)}
+                        </span>
+                      )}
                     </h4>
                     <span className="text-xs font-mono text-lime-600 font-semibold">
-                      {exp.company}
+                      {tx(exp.company, lang)}{exp.location && tx(exp.location, lang) ? ` · ${tx(exp.location, lang)}` : ''}
                     </span>
                   </div>
                   <span className="text-xs font-mono text-slate-500 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 self-start sm:self-auto">
-                    {exp.period}
+                    {exp.period}{exp.duration && tx(exp.duration, lang) ? ` · ${tx(exp.duration, lang)}` : ''}
                   </span>
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {exp.summary}
+                  {tx(exp.summary, lang)}
                 </p>
 
                 {/* Key Responsibilities */}
-                {exp.keyResponsibilities && exp.keyResponsibilities.length > 0 && (
+                {exp.highlights && exp.highlights.length > 0 && (
                   <div className="space-y-1.5 pt-2 border-t border-slate-100">
-                    {exp.keyResponsibilities.map((resp, rIdx) => (
+                    {exp.highlights.map((resp, rIdx) => (
                       <div
                         key={rIdx}
                         className="text-xs text-slate-600 flex items-start gap-2"
                       >
                         <CheckCircle2 className="w-3.5 h-3.5 text-lime-600 shrink-0 mt-0.5" />
-                        <span>{resp}</span>
+                        <span>{tx(resp, lang)}</span>
                       </div>
                     ))}
                   </div>
@@ -96,76 +104,23 @@ export const ResumeSection: React.FC = () => {
           </h3>
 
           <div className="p-6 sm:p-7 portfolio-card space-y-6">
-            <div className="space-y-2.5">
-              <span className="text-xs font-mono text-slate-900 font-bold block">
-                // FRONTEND & ARCHITECTURE
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  'React 18',
-                  'Next.js 14 (App Router)',
-                  'TypeScript',
-                  'Jotai',
-                  'Tailwind CSS',
-                  'Turborepo (Monorepo)',
-                  'Radix UI',
-                  'Framer Motion',
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 rounded-xl text-xs font-mono bg-slate-50 text-slate-800 border border-slate-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            {site.about.skills.map((group, gi) => (
+              <div key={gi} className={`space-y-2.5 ${gi > 0 ? 'pt-4 border-t border-slate-100' : ''}`}>
+                <span className={`text-xs font-mono font-bold block ${['text-slate-900', 'text-purple-700', 'text-lime-700'][gi % 3]}`}>
+                  // {tx(group.category, lang)}
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 rounded-xl text-xs font-mono bg-slate-50 text-slate-800 border border-slate-200"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div className="space-y-2.5 pt-4 border-t border-slate-100">
-              <span className="text-xs font-mono text-purple-700 font-bold block">
-                // BACKEND & DATABASE
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  'Node.js',
-                  'PostgreSQL',
-                  'Supabase',
-                  'Prisma ORM',
-                  'RESTful API',
-                  'GraphQL',
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 rounded-xl text-xs font-mono bg-slate-50 text-slate-800 border border-slate-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-2.5 pt-4 border-t border-slate-100">
-              <span className="text-xs font-mono text-lime-700 font-bold block">
-                // PERFORMANCE & TOOLS
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  'Core Web Vitals',
-                  'SEO Optimization',
-                  'WebP Image Pipeline',
-                  'Git / GitHub Actions',
-                  'Figma to Code',
-                  'Storybook',
-                ].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 rounded-xl text-xs font-mono bg-slate-50 text-slate-800 border border-slate-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Education Capsule */}
@@ -175,10 +130,10 @@ export const ResumeSection: React.FC = () => {
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-900">
-                {t.experience.educationTitle}
+                {site.about.education[0] ? `${tx(site.about.education[0].school, lang)} ${tx(site.about.education[0].department, lang)}` : t.experience.educationTitle}
               </h4>
               <span className="text-xs font-mono text-slate-500">
-                {t.experience.educationDesc}
+                {site.about.education[0]?.period || t.experience.educationDesc}
               </span>
             </div>
           </div>

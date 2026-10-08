@@ -19,8 +19,57 @@
       "themeColor": "yellow",
       "isNew": true,
       "summary": "以 Turborepo 構建大型 Monorepo 體系，整合 4 個 App 與 9 個核心 Package，打造 80+ 獨立 UI 區塊。引入 Jotai 原子化狀態管理與 ts-morph AST 自動代碼生成，賦予行銷團隊 100% 獨立排版上稿能力。",
-      "summaryEn": "以 Turborepo 構建大型 Monorepo 體系，整合 4 個 App 與 9 個核心 Package，打造 80+ 獨立 UI 區塊。引入 Jotai 原子化狀態管理與 ts-morph AST 自動代碼生成，賦予行銷團隊 100% 獨立排版上稿能力。",
       "coverImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "galleryRows": [
+        {
+          "id": "row-1",
+          "layout": "split-left-small",
+          "slots": [
+            {
+              "id": "slot-1-1",
+              "url": "/uploads/1787751498851-____.webp",
+              "title": "Tactile Component",
+              "fit": "contain"
+            },
+            {
+              "id": "slot-1-2",
+              "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+              "title": "Design System Specimen",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "id": "row-2",
+          "layout": "split-left-large",
+          "slots": [
+            {
+              "id": "slot-2-1",
+              "url": "/uploads/1787334348049-S__66437123.webp",
+              "title": "Platform Matrix",
+              "fit": "contain"
+            },
+            {
+              "id": "slot-2-2",
+              "url": "/uploads/1789920319326-____.webp",
+              "title": "Security & Tokens",
+              "fit": "contain"
+            }
+          ]
+        },
+        {
+          "id": "row-3",
+          "layout": "full",
+          "slots": [
+            {
+              "id": "slot-3-1",
+              "url": "/uploads/layout-reference-demo.png",
+              "title": "Full-Width Showcase Overview",
+              "fit": "contain"
+            }
+          ]
+        }
+      ],
       "contentMd": "## 專案背景與痛點\n\n傳統跨品牌多主題遊戲平台常面臨**程式碼重複率高**、**多主題狀態管理衝突**、以及**行銷營運每次更動版面皆需工程團隊發版**的巨大瓶頸。為了解決多端遊戲平台在高頻切換主題時的效能與開發效率問題，我主導打造了全新的 **Cms Playground 模組化遊戲平台體系**。\n/uploads/1787334619283-S__66437123.webp\n---\n\n## 核心技術突破與架構設計\n\n### 1. Turborepo Monorepo 模組化體系\n- 採用 **Turborepo + Yarn Workspaces** 統一管理 4 個前端 App 與 9 個核心 Packages。\n- 拆解出超過 **80+ 獨立 UI 區塊**，跨品牌程式碼重用率達 **85%**。\n\n### 2. Jotai 細粒度原子化狀態與 Optics-TS 光學變換\n- 捨棄龐大的全域單一 Store，改採 **Jotai 原子化狀態**（Atomic State Management），實現精準細粒度渲染，大幅減少不必要的 DOM Re-renders。\n- 結合 **Optics-TS** 光學變換庫，解決複雜深層巢狀物件的不變性狀態更新痛點。\n\n### 3. ts-morph AST 自動代碼生成引擎\n- 結合 **ts-morph** 分析 Abstract Syntax Tree (AST)，自動從後端 CMS 配置與 OpenAPI 規格生成 TypeScript 型別定義與 API 串接程式碼。\n- 減少工程師手動編寫樣板代碼時間超過 **60%**。\n\n### 4. Radix UI + Storybook 企業級 Design System\n- 建構無障礙 (a11y) 優先的企業級 Design System，涵蓋完整的 Design Tokens、色彩語義與響應式斷點。\n\n---\n\n## 實質商業與團隊價值\n\n> 🎯 **零工程介入的即時營運上稿**：行銷與營運團隊透過視覺化 WYSIWYG 畫布，可自由拖曳組合遊戲大廳版面，活動上線時間由原本的 3 天縮減至 **15 分鐘**。\n![專案插圖](/uploads/1787751498851-____.webp)\n\n![專案插圖](/uploads/1787334619283-S__66437123.webp)\n",
       "painPoints": [
         "跨品牌多主題遊戲平台重複造輪子，缺乏統一組件庫",
@@ -176,7 +225,10 @@
           "value": "92% 高轉換"
         }
       ],
-      "demoUrl": "https://kryptogo.com"
+      "demoUrl": "https://kryptogo.com",
+      "images": [
+        "/uploads/1789920319326-____.webp"
+      ]
     },
     {
       "id": "weifeng-industry",
@@ -433,6 +485,93 @@
       "message": "您好！我們欣賞您在 kryptoGO 官網的滿分 SEO 與 Gsap 動畫細節，想委託您協助打造我們創投品牌的 Design System 與官網改版，請問近期是否有檔期？",
       "status": "replied",
       "createdAt": "2026-08-19T09:15:00Z"
+    }
+  ],
+  "config": {
+    "id": "default",
+    "heroTitleZh": "CRAFTING DIGITAL EXPERIENCES WITH MODERN ARCHITECTURE.",
+    "heroTitleEn": "CRAFTING DIGITAL EXPERIENCES WITH MODERN ARCHITECTURE.",
+    "heroSubtitleZh": "資深前端架構師 • 黃令成 (Lincent)",
+    "heroSubtitleEn": "Senior Frontend Architect & Product Engineer • Lincent Huang",
+    "bioZh": "專注於現代前端架構、極致效能優化與細緻互動體驗設計。深耕 Monorepo 模組化、原子狀態管理與 Design System，讓產品兼具工程嚴謹與視覺美學。",
+    "bioEn": "Specializing in modern frontend architecture, extreme performance optimization, and interactive experiences. Deep expertise in Monorepos, atomic state management, and enterprise Design Systems.",
+    "statusTagZh": "可隨時到職 • 接受全職 / 專案合作",
+    "statusTagEn": "Available for Full-time & Project Opportunities",
+    "yearsOfExp": "5+ Years",
+    "uiComponentsCount": "80+ UI",
+    "lighthouseScore": "99 / 100",
+    "locationZh": "台灣台北 • 支援遠端",
+    "locationEn": "Taipei, Taiwan • Remote Friendly",
+    "email": "lincent.work@gmail.com",
+    "githubUrl": "https://github.com",
+    "linkedinUrl": "https://linkedin.com"
+  },
+  "cards": [
+    {
+      "id": "card-arch",
+      "type": "skill",
+      "titleZh": "前端架構與狀態治理",
+      "titleEn": "Frontend Architecture & State",
+      "descZh": "精通 Turborepo Monorepo、Jotai 原子狀態與 Optics-TS 光學變換，解決超大型專案重複開發與狀態卡頓。",
+      "descEn": "Mastery in Turborepo monorepos, Jotai fine-grained atomic state, and Optics-TS optics transformation for high scalability.",
+      "tagZh": "核心優勢",
+      "tagEn": "Core Focus",
+      "icon": "Layers",
+      "color": "cyan",
+      "order": 1,
+      "isVisible": true
+    },
+    {
+      "id": "card-design-system",
+      "type": "skill",
+      "titleZh": "企業級 Design System",
+      "titleEn": "Enterprise Design System",
+      "descZh": "基於 Radix UI 與 Storybook 打造無障礙 (a11y) 元件庫，建立團隊單一真理源，提升 40% 交付效率。",
+      "descEn": "Architecting a11y-compliant, headless UI component libraries with Radix UI and Storybook as single source of truth.",
+      "tagZh": "設計工程化",
+      "tagEn": "Engineering",
+      "icon": "Layout",
+      "color": "violet",
+      "order": 2,
+      "isVisible": true
+    },
+    {
+      "id": "card-tools",
+      "type": "tool",
+      "titleZh": "現代技術工具箱",
+      "titleEn": "Modern Tech Stack & Tools",
+      "descZh": "日常深耕與熟練運用的核心開發工具、語言與雲端服務。",
+      "descEn": "Daily driver tools, modern frameworks, and cloud infrastructure for fast production delivery.",
+      "items": [
+        "Next.js 14",
+        "React 18",
+        "TypeScript",
+        "Jotai",
+        "Tailwind CSS",
+        "Supabase",
+        "PostgreSQL",
+        "Prisma",
+        "Figma",
+        "Turborepo"
+      ],
+      "icon": "Cpu",
+      "color": "emerald",
+      "order": 3,
+      "isVisible": true
+    },
+    {
+      "id": "card-services",
+      "type": "service",
+      "titleZh": "專業服務與合作項目",
+      "titleEn": "Services & Collaboration",
+      "descZh": "從 0 到 1 產品全端架構、Core Web Vitals 極致效能調優、現代設計系統導入與技術顧問諮詢。",
+      "descEn": "0-to-1 Fullstack Architecture, Core Web Vitals optimization, Design System rollout, and Technical Consulting.",
+      "tagZh": "服務範圍",
+      "tagEn": "Services",
+      "icon": "Zap",
+      "color": "amber",
+      "order": 4,
+      "isVisible": true
     }
   ]
 }

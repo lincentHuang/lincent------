@@ -2,29 +2,33 @@
 
 import React from 'react';
 import { useI18n } from '../../../i18n';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
 import { Quote } from 'lucide-react';
 
 export const TestimonialsSection: React.FC = () => {
-  const { t } = useI18n();
+  const { lang } = useI18n();
+  const site = useSite();
+  const c = site.testimonials;
 
   return (
-    <section className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
+    <section id="testimonials" className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {t.testimonials.tag}
+          {tx(c.tag, lang)}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {t.testimonials.title}
+          {tx(c.title, lang)}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {t.testimonials.subtitle}
+          {tx(c.subtitle, lang)}
         </p>
       </div>
 
       {/* 3 Testimonial Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {t.testimonials.list.map((item, idx) => (
+        {c.items.map((item, idx) => (
           <div
             key={idx}
             className="p-7 sm:p-8 portfolio-card flex flex-col justify-between space-y-6"
@@ -34,7 +38,7 @@ export const TestimonialsSection: React.FC = () => {
                 <Quote className="w-4 h-4" />
               </div>
               <p className="text-xs sm:text-sm text-slate-800 font-normal leading-relaxed">
-                "{item.quote}"
+                "{tx(item.quote, lang)}"
               </p>
             </div>
 
@@ -45,7 +49,7 @@ export const TestimonialsSection: React.FC = () => {
               <div>
                 <h4 className="text-xs font-bold text-slate-900">{item.author}</h4>
                 <span className="text-[11px] text-slate-500 font-mono">
-                  {item.role}
+                  {tx(item.role, lang)}
                 </span>
               </div>
             </div>

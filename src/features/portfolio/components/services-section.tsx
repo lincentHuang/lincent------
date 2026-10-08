@@ -2,10 +2,14 @@
 
 import React from 'react';
 import { useI18n } from '../../../i18n';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
 import { Code2, Layout, Zap } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
-  const { t } = useI18n();
+  const { lang } = useI18n();
+  const site = useSite();
+  const c = site.services;
   const icons = [Code2, Layout, Zap];
 
   return (
@@ -13,19 +17,19 @@ export const ServicesSection: React.FC = () => {
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {t.services.tag}
+          {tx(c.tag, lang)}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {t.services.title}
+          {tx(c.title, lang)}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {t.services.subtitle}
+          {tx(c.subtitle, lang)}
         </p>
       </div>
 
       {/* 3 Services Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {t.services.items.map((s, idx) => {
+        {c.items.map((s, idx) => {
           const Icon = icons[idx] || Code2;
 
           return (
@@ -39,11 +43,11 @@ export const ServicesSection: React.FC = () => {
                 </div>
 
                 <h3 className="text-xl font-sans font-bold text-slate-900">
-                  {s.title}
+                  {tx(s.title, lang)}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {s.desc}
+                  {tx(s.desc, lang)}
                 </p>
               </div>
 

@@ -1,23 +1,26 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { AmbientBackground } from '../components/layouts/ambient-background';
+import { PageTransitionProvider } from '../components/providers/page-transition-provider';
+import { ContentProvider } from '../content/content-provider';
+import { getPublicContent } from '../server/content-repo';
 
-export const metadata: Metadata = {
-  title: 'Lincent Huang | Senior Frontend Architect & Product Engineer',
-  description: 'A premium portfolio showcasing modern frontend architecture, design systems, and high-performance web applications.',
-  icons: {
-    icon: '/images/lincent-logo.svg',
-    apple: '/images/lincent-logo.png',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { site } = await getPublicContent();
+  return {
+    title: site.seo.title.zh,
+    description: site.seo.description.zh,
+    icons: {
+      icon: '/images/lincent-logo.svg',
+      apple: '/images/lincent-logo.png',
+    },
+    openGraph: site.seo.ogImage ? { images: [site.seo.ogImage] } : undefined,
+  };
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const content = await getPublicContent();
   return (
-    <html lang="zh-TW" className="scroll-smooth">
+    <html lang="zh-TW">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -27,7 +30,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased text-[#121218] selection:text-[#121218]">
-        {children}
+        <ContentProvider content={content}>
+          <PageTransitionProvider>{children}</PageTransitionProvider>
+        </ContentProvider>
       </body>
     </html>
   );

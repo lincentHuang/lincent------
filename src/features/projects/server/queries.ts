@@ -1,17 +1,11 @@
 import 'server-only';
 import { cache } from 'react';
-import { getAllProjects } from '../../../lib/db';
-import { ProjectItem } from '../../../types';
+import { getPublicContent } from '../../../server/content-repo';
+import type { Project } from '../../../content/types';
 
-/**
- * Encapsulated Data Access Layer for Projects
- * Utilizes React.cache() for request-level deduplication
- */
-export const getProjects = cache(async (): Promise<ProjectItem[]> => {
-  return await getAllProjects();
-});
+export const getProjects = cache(async (): Promise<Project[]> => (await getPublicContent()).projects);
 
-export const getProjectById = cache(async (id: string): Promise<ProjectItem | null> => {
-  const all = await getAllProjects();
+export const getProjectById = cache(async (id: string): Promise<Project | null> => {
+  const all = await getProjects();
   return all.find((p) => p.id === id) || null;
 });

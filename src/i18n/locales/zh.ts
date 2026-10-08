@@ -25,152 +25,8 @@ export const zh = {
     letsTalk: '聯繫合作',
   },
   hero: {
-    badge: 'OPEN FOR NEW OPPORTUNITIES • 可隨時到職',
-    headlinePrefix: '以現代架構打造',
-    headlineMain: '頂級品牌，',
-    headlineHighlight: '更高效',
-    subtitle: '專注於打造優雅的數位品牌、現代前端架構與極致效能體驗，賦能雄心勃勃的團隊與創作者。',
     viewProjects: '瀏覽精選作品',
     getInTouch: '聯繫諮詢',
-    bookingTag: '專案預約',
-    bookingTitle: '可承接全職與專案合作',
-    bookingDesc: '簡述您的需求，我將在 24 小時內回覆明確方案。',
-    stats: {
-      completedNum: '30+',
-      completedLabel: '專案交付',
-      expNum: '8yr',
-      expLabel: '專業經歷',
-      clientsNum: '40+',
-      clientsLabel: '合作團隊與夥伴',
-    },
-  },
-  benefits: {
-    tag: '核心優勢',
-    title: '探索卓越的工程與設計標準',
-    subtitle: '打造簡潔、高響應度的前端架構與設計系統，清晰傳達產品價值，並為團隊創造實質商業回報。',
-    card1: {
-      title: '企業級 Design System 設計系統',
-      desc: '基於 Radix UI 與 Storybook 打造無障礙 (a11y) 元件庫，建立團隊單一真理源，讓產品在所有端點保持極致一致性。',
-      label: '// Reusable Component Tokens',
-    },
-    card2: {
-      title: '為極致效能與 SEO 而生',
-      desc: '以嚴謹的 Core Web Vitals 調校、圖片自動 WebP 轉檔與 SSR/SSG 混合渲染，實現秒開與 SEO 最佳化。',
-      scoreLabel: 'Lighthouse Score',
-    },
-    card3: {
-      tag: '現代化前端工程架構',
-      title: 'Turborepo Monorepo ✕ Next.js 14 ✕ 原子狀態治理',
-      desc: '深耕大型 Monorepo 模組化設計、Jotai 精細化原子狀態管理與 ts-morph AST 自動化，賦能團隊 100% 高效交付。',
-    },
-  },
-  whyChooseMe: {
-    tag: '核心價值與堅持',
-    title: '追求系統、數據、極簡與實用性',
-    subtitle: '結合產品思維、工程架構與高保真視覺執行力，為產品打造兼具商業成效與極致體驗的現代前端體系。',
-    stats: [
-      {
-        value: '+100K',
-        title: '服務累積用戶數',
-        desc: '支撐高併發與裂變行銷活動流暢運行。',
-      },
-      {
-        value: '100%',
-        title: '程式碼與可維護性標準',
-        desc: '嚴格型別檢查、無障礙規範與自動化 CI/CD。',
-      },
-      {
-        value: '5+ Yrs',
-        title: '大中型產品研發實戰',
-        desc: '具備從需求分析、架構選型到效能調優完整經驗。',
-      },
-      {
-        value: '4.9 ★',
-        title: '跨職能協作高度認可',
-        desc: '深得設計師、後端團隊與產品經理信任。',
-      },
-    ],
-  },
-  services: {
-    tag: '專業服務範疇',
-    title: '專注於高標準前端架構與體驗交付',
-    subtitle: '提供從需求分析、技術選型、設計系統落地到極致效能調優的全週期前端工程支持。',
-    items: [
-      {
-        title: '前端架構與全端開發',
-        desc: '打造高響應、高可擴展性的現代 Web 應用。結合 Next.js 14、React 18、TypeScript 與 Supabase 實現生產級交付。',
-        tags: ['Next.js 14', 'React 18', 'TypeScript', 'Monorepo'],
-      },
-      {
-        title: '企業級 Design System',
-        desc: '基於 Radix UI 與 Tailwind 打造無障礙組件庫與設計 Token，消除工程與設計溝通成本，提升團隊交付速率。',
-        tags: ['Radix UI', 'Tailwind CSS', 'Storybook', 'Figma Tokens'],
-      },
-      {
-        title: '極致效能調優與 DX 提升',
-        desc: '專注 Core Web Vitals 秒開優化、圖片自動轉檔管線、Jotai 細粒度原子狀態治理與 AST 自動化程式碼生成。',
-        tags: ['Core Web Vitals', 'Jotai State', 'ts-morph AST', 'SEO'],
-      },
-    ],
-  },
-  process: {
-    tag: '研發流程',
-    title: '嚴謹高效的六步全流程推進',
-    subtitle: '透明、結構化的協作流程，確保專案從概念雛形平穩抵達高品質生產交付。',
-    steps: [
-      {
-        num: '01',
-        title: '需求洞察與定義 (Discovery)',
-        desc: '深入理解專案商業目標、目標用戶畫像、關鍵指標與架構約束。',
-      },
-      {
-        num: '02',
-        title: '架構選型與策略 (Strategy)',
-        desc: '制定技術選型（Monorepo、狀態治理、資料庫串接與渲染策略）。',
-      },
-      {
-        num: '03',
-        title: '設計系統規範 (Direction)',
-        desc: '建立 Design Tokens、色票、排版規範與無障礙 Headless 元件骨幹。',
-      },
-      {
-        num: '04',
-        title: '高保真工程研發 (Architecture & Build)',
-        desc: '嚴格落實 TypeScript 型別安全、自適應響應式佈局與細緻微互動。',
-      },
-      {
-        num: '05',
-        title: '極致效能調優 (Performance)',
-        desc: 'Core Web Vitals 調校、圖片自動 WebP 轉檔、首屏載入壓至 1 秒內。',
-      },
-      {
-        num: '06',
-        title: '測試交付與上線 (Delivery)',
-        desc: '完備的邊界測試、CI/CD 自動化部署與文件交接，確保穩定生產就緒。',
-      },
-    ],
-  },
-  testimonials: {
-    tag: '同行與團隊評價',
-    title: '值得信賴的工程交付評價',
-    subtitle: '來自產品負責人、設計總監與技術團隊的真實協作反饋。',
-    list: [
-      {
-        quote: '與令成合作非常順暢。他對現代前端架構與 Design System 的掌握極為精準，讓團隊在短時間內突破了渲染與編譯效能瓶頸。',
-        author: 'Ethan Brooks',
-        role: 'Product Lead / 技術負責人',
-      },
-      {
-        quote: '開發流程高度結構化且組織嚴密。每一個技術決策都經過深思熟慮，最終交付的產品在效能與視覺細節上都無可挑剔。',
-        author: 'Maya Chen',
-        role: 'Design Director / 設計總監',
-      },
-      {
-        quote: '他不僅能寫出高品質的程式碼，更能站在使用者體驗與商業價值的高度對齊產品。是少見兼具設計底蘊與架構深度的資深工程師。',
-        author: 'Marcus Vance',
-        role: 'Founder & CEO',
-      },
-    ],
   },
   projects: {
     tag: '精選代表作品',
@@ -214,16 +70,12 @@ export const zh = {
     sendAnother: '發送另一則訊息',
   },
   experience: {
-    tag: '經歷與技能',
-    title: '專業經歷與深厚技術積累',
-    subtitle: '擁有 5+ 年大中型產品研發實戰，具備從需求分析、架構選型到效能調優的完整落地經驗。',
     workHistory: '工作經歷',
     coreStack: '核心技術棧',
     educationTitle: '設計與資工跨界整合',
     educationDesc: '追求工程嚴謹度與美感極致平衡',
   },
   footer: {
-    role: '資深前端架構師 • 台灣台北',
     builtWith: 'Built with Next.js 14, Tailwind CSS & Supabase',
     copyright: 'Lincent Huang. Crafted with clarity.',
     backToTop: '回到頂部',

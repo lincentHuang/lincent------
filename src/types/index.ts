@@ -9,97 +9,29 @@ export interface MultilingualText {
 }
 
 // ==========================================
-// 📢 SITE CONFIGURATION (HERO & GLOBAL COPY)
+// 🖼️ MODULAR GALLERY ROWS (CUSTOM RATIO & FULL-WIDTH)
 // ==========================================
-export interface SiteConfig {
+export type GalleryRowLayout =
+  | 'full'              // 100% 全寬大圖 (1 張)
+  | 'split-left-small'  // 左小右大 (~40% : ~60% / 5:7 欄位) (2 張)
+  | 'split-left-large'  // 左大右小 (~60% : ~40% / 7:5 欄位) (2 張)
+  | 'split-equal';      // 左右等分 (50% : 50% / 6:6 欄位) (2 張)
+
+export interface GallerySlot {
   id: string;
-  heroTitleZh: string;
-  heroTitleEn: string;
-  heroSubtitleZh: string;
-  heroSubtitleEn: string;
-  bioZh: string;
-  bioEn: string;
-  statusTagZh: string;
-  statusTagEn: string;
-  yearsOfExp: string;
-  uiComponentsCount: string;
-  lighthouseScore: string;
-  locationZh: string;
-  locationEn: string;
-  email: string;
-  githubUrl: string;
-  linkedinUrl: string;
-  updatedAt?: string;
+  url: string;
+  title?: string;
+  caption?: string;
+  aspectRatio?: string; // e.g. 'auto' | '16/9' | '4/3' | '1/1'
+  fit?: 'contain' | 'cover';
+  bgColor?: string;     // optional custom card background color e.g. #0A0A0E
 }
 
-// ==========================================
-// 🧩 MODULAR BENTO CARDS
-// ==========================================
-export type ModularCardType = 'skill' | 'tool' | 'service' | 'metric';
-
-export interface ModularCard {
+export interface GalleryRow {
   id: string;
-  type: ModularCardType;
-  titleZh: string;
-  titleEn: string;
-  descZh: string;
-  descEn: string;
-  tagZh?: string;
-  tagEn?: string;
-  icon?: string; // lucide icon name (e.g. Code2, Layout, Cpu, Zap, Sparkles)
-  color?: string; // cyan, violet, rose, emerald, amber
-  metricsValue?: string; // e.g. "99/100", "5+ Yrs", "80+ UI"
-  items?: string[]; // e.g. list of tools or tech stack
-  order: number;
-  isVisible: boolean;
-  createdAt?: string;
-  updatedAt?: string;
-}
-
-// ==========================================
-// 🗂️ PROJECT ITEM (WITH MULTILINGUAL SUPPORT)
-// ==========================================
-export interface ProjectItem {
-  id: string;
-  title: string;
-  titleEn?: string;
-  subtitle?: string;
-  subtitleEn?: string;
-  tag: string;
-  tagEn?: string;
-  category: string;
-  categoryEn?: string;
-  year: string;
-  role: string;
-  roleEn?: string;
-  company: string;
-  companyEn?: string;
-  badge?: string;
-  badgeEn?: string;
-  themeColor: 'yellow' | 'purple' | 'coral' | 'mint' | 'blue';
-  isNew: boolean;
-  summary: string;
-  summaryEn?: string;
-  coverImage?: string;
-  images?: string[];
-  contentMd?: string;
-  contentMdEn?: string;
-  painPoints: string[];
-  painPointsEn?: string[];
-  techStack: string[];
-  aiHighlights: {
-    coreHighlights: string[];
-    coreHighlightsEn?: string[];
-    animationHighlights: string[];
-    animationHighlightsEn?: string[];
-    usageScenarios: string[];
-    usageScenariosEn?: string[];
-    clientPitch: string;
-    clientPitchEn?: string;
-  };
-  metrics?: { label: string; labelEn?: string; value: string }[];
-  demoUrl?: string;
-  githubUrl?: string;
+  layout: GalleryRowLayout;
+  slots: GallerySlot[]; // slots[0] is Left/Main, slots[1] is Right (for 2-col layouts)
+  caption?: string;
 }
 
 // ==========================================
@@ -134,3 +66,33 @@ export interface AITranslateResponse {
   translatedFields?: Record<string, string>;
   error?: string;
 }
+
+// ==========================================
+// 🌊 SMOOTH SCROLL (LENIS) CONFIG & CONTEXT
+// ==========================================
+export interface SmoothScrollConfig {
+  duration?: number;
+  easing?: (t: number) => number;
+  smoothWheel?: boolean;
+  smoothTouch?: boolean;
+  wheelMultiplier?: number;
+  touchMultiplier?: number;
+  prevent?: (node: HTMLElement) => boolean;
+}
+
+export interface ScrollToOptions {
+  offset?: number;
+  immediate?: boolean;
+  lock?: boolean;
+  duration?: number;
+  easing?: (t: number) => number;
+  onComplete?: () => void;
+}
+
+export interface SmoothScrollContextValue {
+  scrollTo: (target: string | number | HTMLElement, options?: ScrollToOptions) => void;
+  stop: () => void;
+  start: () => void;
+  isReady: boolean;
+}
+

@@ -11,7 +11,7 @@ import {
   Boxes,
   Globe,
 } from 'lucide-react';
-import { ProjectItem } from '../../../types';
+import type { Project } from '../../../content/types';
 
 export const ProjectBadgeIcon: React.FC<{ id: string; className?: string }> = ({
   id,
@@ -69,7 +69,7 @@ export const ProjectBadgeIcon: React.FC<{ id: string; className?: string }> = ({
   }
 };
 
-export function getShortProjectTitle(p: ProjectItem, lang: 'zh' | 'en' = 'zh'): string {
+export function getShortProjectTitle(p: Project, lang: 'zh' | 'en' = 'zh'): string {
   const full = lang === 'en' ? (p.titleEn || p.title) : p.title;
   return full.split('—')[0].split(' - ')[0].trim();
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { AdminDashboard } from '../../features/admin/components/admin-dashboard';
+import { AdminShell } from '../../features/admin/admin-shell';
 
 export const metadata: Metadata = {
-  title: 'Admin Management Console | Lincent Studio',
-  description: 'Manage site configuration, modular cards, projects showcase, and client inquiries.',
+  title: '網站後台 | Lincent',
+  robots: { index: false, follow: false },
 };
 
 export default function AdminPage() {
-  return <AdminDashboard />;
+  return <AdminShell />;
 }

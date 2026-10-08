@@ -3,16 +3,20 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useAtom } from 'jotai';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projectsAtom } from '../../../store/atoms';
+import { useProjects } from '../../../content/content-provider';
+import { MediaImage } from '../../../components/media/media-image';
+import { pick } from '../../../content/types';
 import { useI18n } from '../../../i18n';
-import { ArrowUpRight, Star, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { usePageTransition } from '../../../components/providers/page-transition-provider';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 
 export const FeaturedProjects: React.FC = () => {
-  const [projects] = useAtom(projectsAtom);
-  const { t, isEn } = useI18n();
+  const allProjects = useProjects();
+  const projects = React.useMemo(() => allProjects.filter((p) => p.featured), [allProjects]);
+  const { t, isEn, lang } = useI18n();
   const router = useRouter();
+  const { transitionTo } = usePageTransition();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -199,7 +203,7 @@ export const FeaturedProjects: React.FC = () => {
                 }}
                 onClick={() => {
                   if (isCenter) {
-                    router.push(`/projects/${proj.id}`);
+                    transitionTo(`/projects/${proj.id}`);
                   } else {
                     handleSelect(index);
                   }
@@ -226,8 +230,9 @@ export const FeaturedProjects: React.FC = () => {
                   {/* Top Image Box with Badges */}
                   <div className="relative rounded-[22px] overflow-hidden bg-slate-100 h-56 sm:h-64 md:h-70 w-full mb-4 sm:mb-5">
                     {proj.coverImage ? (
-                      <img
+                      <MediaImage
                         src={proj.coverImage}
+                        variant="thumb"
                         alt={title}
                         className="w-full h-full object-cover object-top transition-transform duration-500 ease-out"
                         style={{
@@ -247,14 +252,6 @@ export const FeaturedProjects: React.FC = () => {
                       </span>
                       <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white/90 text-[11px] font-mono shadow-xs">
                         {primaryTech}
-                      </span>
-                    </div>
-
-                    {/* Floating Rating / Score Pill (Top-Right) */}
-                    <div className="absolute top-3.5 right-3.5 z-10">
-                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold flex items-center gap-1 shadow-xs">
-                        <Star className="w-3 h-3 text-amber-300 fill-amber-300" />
-                        <span>4.9</span>
                       </span>
                     </div>
 
@@ -293,14 +290,18 @@ export const FeaturedProjects: React.FC = () => {
 
                     {/* Bottom Action Row: Metric / Role + Sleek Black Pill Button */}
                     <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                      <div>
-                        <span className="text-sm sm:text-base font-bold text-[#121218] block font-sans">
-                          {proj.metrics?.[0]?.value || '99%'}
-                        </span>
-                        <span className="text-[11px] text-slate-400 font-mono block">
-                          {proj.metrics?.[0]?.label || t.projects.satisfactionLabel}
-                        </span>
-                      </div>
+                      {proj.metrics?.[0] ? (
+                        <div>
+                          <span className="text-sm sm:text-base font-bold text-[#121218] block font-sans">
+                            {proj.metrics[0].value}
+                          </span>
+                          <span className="text-[11px] text-slate-400 font-mono block">
+                            {pick(proj.metrics[0].label, proj.metrics[0].labelEn, lang)}
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-[11px] text-slate-400 font-mono">{pick(proj.role, proj.roleEn, lang)}</span>
+                      )}
 
                       {/* Black Pill Button with Circular Arrow Badge */}
                       <div

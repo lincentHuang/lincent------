@@ -1,3 +1,5 @@
+@import 'lenis/dist/lenis.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,16 @@
 :root {
   --background: #F7F7F8;
   --foreground: #121218;
+}
+
+/* Ensure Lenis smooth scrolling is not overridden by CSS scroll-behavior */
+html.lenis {
+  height: auto;
+  scroll-behavior: auto !important;
+}
+
+html.lenis body {
+  height: auto;
 }
 
 body {
@@ -97,3 +109,5 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+

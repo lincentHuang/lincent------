@@ -2,23 +2,27 @@
 
 import React from 'react';
 import { useI18n } from '../../../i18n';
+import { useSite } from '../../../content/content-provider';
+import { tx } from '../../../content/types';
 import { Sparkles } from 'lucide-react';
 
 export const BenefitsSection: React.FC = () => {
-  const { t } = useI18n();
+  const { lang } = useI18n();
+  const site = useSite();
+  const c = site.benefits;
 
   return (
     <section id="benefits" className="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
       {/* Section Header */}
       <div className="space-y-3 mb-12">
         <div className="inline-block px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-800 shadow-xs">
-          {t.benefits.tag}
+          {tx(c.tag, lang)}
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-bold tracking-tight text-slate-900">
-          {t.benefits.title}
+          {tx(c.title, lang)}
         </h2>
         <p className="text-sm sm:text-base text-slate-600 max-w-2xl font-normal leading-relaxed">
-          {t.benefits.subtitle}
+          {tx(c.subtitle, lang)}
         </p>
       </div>
 
@@ -28,17 +32,17 @@ export const BenefitsSection: React.FC = () => {
         <div className="md:col-span-7 p-7 sm:p-9 portfolio-card flex flex-col justify-between space-y-6">
           <div className="space-y-3">
             <h3 className="text-xl sm:text-2xl font-sans font-bold text-slate-900">
-              {t.benefits.card1.title}
+              {tx(c.cards[0]?.title, lang)}
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              {t.benefits.card1.desc}
+              {tx(c.cards[0]?.desc, lang)}
             </p>
           </div>
 
           {/* Interactive UI Component Tokens Preview */}
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
             <div className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
-              {t.benefits.card1.label}
+              {tx(c.cards[0]?.tag, lang)}
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <button className="px-3.5 py-1.5 rounded-full bg-[#121218] text-white text-xs font-medium">
@@ -67,17 +71,17 @@ export const BenefitsSection: React.FC = () => {
         <div className="md:col-span-5 p-7 sm:p-9 portfolio-card flex flex-col justify-between space-y-6">
           <div className="space-y-3">
             <h3 className="text-xl sm:text-2xl font-sans font-bold text-slate-900">
-              {t.benefits.card2.title}
+              {tx(c.cards[1]?.title, lang)}
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              {t.benefits.card2.desc}
+              {tx(c.cards[1]?.desc, lang)}
             </p>
           </div>
 
           {/* Performance Analytics Widget Mockup */}
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
-              <span>{t.benefits.card2.scoreLabel}</span>
+              <span>{tx(c.cards[1]?.tag, lang)}</span>
               <span className="text-lime-600 font-bold">99 / 100</span>
             </div>
             <div className="grid grid-cols-2 gap-3 pt-1">
@@ -98,18 +102,18 @@ export const BenefitsSection: React.FC = () => {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-lime-50 text-lime-800 border border-lime-200 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{t.benefits.card3.tag}</span>
+              <span>{tx(c.cards[2]?.tag, lang)}</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-sans font-bold text-slate-900">
-              {t.benefits.card3.title}
+              {tx(c.cards[2]?.title, lang)}
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              {t.benefits.card3.desc}
+              {tx(c.cards[2]?.desc, lang)}
             </p>
           </div>
 
           <div className="flex flex-wrap gap-2 md:max-w-xs">
-            {['Next.js 14', 'React 18', 'TypeScript', 'Turborepo', 'Jotai', 'Tailwind', 'Supabase', 'PostgreSQL'].map((tag) => (
+            {(c.cards[2]?.chips || []).map((tag) => (
               <span
                 key={tag}
                 className="px-3 py-1.5 rounded-xl text-xs font-mono bg-slate-50 text-slate-800 border border-slate-200 font-medium"

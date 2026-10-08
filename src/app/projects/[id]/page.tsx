@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { FrontendShell } from '../../../components/layouts/frontend-shell';
 import { Footer } from '../../../components/layouts/footer';
 import { ProjectShowcase } from '../../../features/projects/components/project-showcase';
-import { getProjectById } from '../../../features/projects/server/queries';
+import { getProjectById, getProjects } from '../../../features/projects/server/queries';
 
 interface PageProps {
   params: { id: string };
@@ -18,10 +19,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${project.title} | Lincent Huang`,
     description: project.summary,
+    openGraph: project.coverImage ? { images: [project.coverImage] } : undefined,
   };
 }
 
-export default function ProjectDetailPage({ params }: PageProps) {
+export async function generateStaticParams() {
+  const projects = await getProjects();
+  return projects.map((p) => ({ id: p.id }));
+}
+
+export default async function ProjectDetailPage({ params }: PageProps) {
+  const project = await getProjectById(params.id);
+  if (!project) notFound();
   const projectId = params.id;
 
   return (
